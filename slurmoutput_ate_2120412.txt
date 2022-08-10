@@ -1,0 +1,1343 @@
+linear_regression
+{'control_value': 0, 'treatment_value': 1, 'test_significance': True, 'evaluate_effect_strength': False, 'confidence_intervals': True, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'H', 'J']}
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+{'control_value': 0, 'treatment_value': 1, 'test_significance': True, 'evaluate_effect_strength': False, 'confidence_intervals': True, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B']}
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+{'control_value': 0, 'treatment_value': 1, 'test_significance': True, 'evaluate_effect_strength': False, 'confidence_intervals': True, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+{'treatment_value': 1, 'control_value': 0, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'atc', 'effect_modifiers': ['B', 'P']}
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+{'control_value': 0, 'treatment_value': 1, 'test_significance': True, 'evaluate_effect_strength': False, 'confidence_intervals': True, 'target_units': 'atc', 'effect_modifiers': []}
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+{'control_value': 0, 'treatment_value': 1, 'test_significance': True, 'evaluate_effect_strength': False, 'confidence_intervals': True, 'target_units': 'atc', 'effect_modifiers': []}
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+linear_regression
+Time taken for one posterior of size 1000 was 45.253331661224365
+ALL DONE
+
+======== GPU REPORT ========
+
+==============NVSMI LOG==============
+
+Timestamp                                 : Tue Aug  9 09:21:36 2022
+Driver Version                            : 510.73.08
+CUDA Version                              : 11.6
+
+Attached GPUs                             : 1
+GPU 00000000:39:00.0
+    Accounting Mode                       : Enabled
+    Accounting Mode Buffer Size           : 4000
+    Accounted Processes                   : None
+
+Tue Aug  9 09:21:36 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.73.08    Driver Version: 510.73.08    CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 8000     Off  | 00000000:39:00.0 Off |                  Off |
+| 33%   26C    P8    13W / 260W |      0MiB / 49152MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+

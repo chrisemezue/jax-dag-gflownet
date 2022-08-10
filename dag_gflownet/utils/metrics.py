@@ -25,7 +25,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import numpy as np
-
+from typing import Optional
 from sklearn import metrics
 
 
@@ -126,3 +126,61 @@ def threshold_metrics(posterior, ground_truth):
         'prc_auc': prc_auc,
         'ave_prec': ave_prec,
     }
+
+
+def compute_ATE(posterior,ground_truth):
+    """
+    Computes the ATE RMSE between the graph samples in the posterior and the ground truth DAG. 
+    """ 
+
+    
+
+def get_ate_from_samples(
+    intervened_samples: np.ndarray,
+    baseline_samples: np.ndarray,
+    normalise: bool = False,
+    processed: bool = True,
+):
+    """
+    Computes ATE E[y | do(x)=a] - E[y] from samples of y from p(y | do(x)=a) and p(y)
+
+    Args:
+        intervened_samples: np.ndarray of shape (Nsamples, observation_dimension) containing samples from the intervened distribution p(y | do(x)=a)
+        baseline_samples: np.ndarray of shape (Nsamples, observation_dimension) containing samples from the non-intervened distribution p(y)
+        normalise: boolean indicating whether to normalise samples by their maximum and minimum values
+        processed: whether the data has been processed (which affects the column numbering)
+    """
+    intervened_mean = intervened_samples.mean(axis=0)
+    baseline_mean = baseline_samples.mean(axis=0)
+
+    return intervened_mean - baseline_mean    
+
+def calculate_rmse(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> np.ndarray:
+    """
+    Calculates the root mean squared error (RMSE) between arrays `a` and `b`.
+
+    Args:
+        a (ndarray): Array used for error calculation
+        b (ndarray): Array used for error calculation
+        axis (int): Axis upon which to calculate mean
+
+    Returns: (ndarray) RMSE value taken along axis `axis`.
+    """
+    return np.sqrt(np.mean(np.square(np.subtract(a, b)), axis=axis))
+
+
+ # Calculate RMSE   -> Can also do `atc`
+ # BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines'
+ # decide intervention and target variable and intervention value 
+ # for each baseline in baselines:
+ # for each seed in baseline
+ # read data: 
+ # read true graph (and have in networkx DiGraph format.)
+ #  read posterior numpy
+ # for each posterior:
+ #  convert to a form of digraph
+ #  put graph inside doWhy
+ #  get estimand and calculate estimate
+ # get RMSE between pred and real 
+ # outcome: CSV where columns are baselines 
+ # |baseline|value|seed|
