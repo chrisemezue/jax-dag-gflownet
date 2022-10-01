@@ -28,14 +28,17 @@ BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
 def get_causal_estimate(graph,df):
     model = CausalModel(data=df, treatment=['K'],outcome='M',graph=nx.DiGraph(graph),use_graph_as_is=True)
     # II. Identify causal effect and return target estimands
+    st = time.time()
     identified_estimand = model.identify_effect()
+    #print(f"Time for identifying effect: {time.time()- st}")
+    #st_est = time.time()
     causal_estimate_reg = model.estimate_effect(identified_estimand,
-            target_units='atc',
+            target_units='ate',
             control_value=0,
             treatment_value=1,
             method_name="backdoor.linear_regression",
-            test_significance=True,confidence_intervals=True)
-
+            test_significance=False,confidence_intervals=False)
+    #print(f"Time to do linear regression: {time.time()-st_est}")
     causal_estimate = causal_estimate_reg.value
     #print("Causal Estimate is " + str(causal_estimate_reg.value))
     return causal_estimate
@@ -64,95 +67,62 @@ def calculate_rmse(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> 
     return np.sqrt(np.mean(np.square(np.subtract(a, b)), axis=axis))
 
 
-baseline_to_use = sys.argv[1]
-SEED_TO_USE =5
-for baseline in [baseline_to_use]:
-    for seed in [SEED_TO_USE]:
-        BASE_PATH = os.path.join(os.path.join(BASELINE_FOLDER,baseline),str(seed))
+def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> np.ndarray:
+    """
+    Calculates the squared difference between arrays `a` and `b`.
 
-        with open(os.path.join(BASE_PATH,'graph.pkl'),'rb') as fl:
-            graph = pl.load(fl)
+    Args:
+        a (ndarray): Array used for error calculation
+        b (ndarray): Array used for error calculation
+        axis (int): Axis upon which to calculate mean
 
-        df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
+    Returns: (ndarray) RMSE value taken along axis `axis`.
+    """
+    return np.square(np.subtract(a, b))
 
-        true_estimate = get_causal_estimate(graph,df)
+if __name__=="__main__":
+    baseline_to_use = sys.argv[1]
+    SEED_TO_USE = sys.argv[2]
+    for baseline in [baseline_to_use]:
+        for seed in [SEED_TO_USE]:
+            BASE_PATH = os.path.join(os.path.join(BASELINE_FOLDER,baseline),str(seed))
 
-        # Get posterior
-        count=0
-        posterior_file_path = os.path.join(BASE_PATH,'posterior.npy')
-        if not os.path.isfile(posterior_file_path):
-            continue
-        posterior = np.load(posterior_file_path)
-        st_time = time.time()
-        causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:]) for i in range(posterior.shape[0])])
-        with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
-            np.save(fl,causal_estimates)
-        #causal_estimates = np.full(posterior.shape[0], fill_value=1) 
-        print(f'Time taken for one posterior of size {posterior.shape[0]} was {time.time()-st_time}')
-        true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
-        with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
-            np.save(fl,true_causal_estimates)
-        rmse_value = calculate_rmse(causal_estimates,true_causal_estimates)
-        
-        baselines_.append(baseline)
-        rmses_.append(rmse_value)
-        seeds_.append(seed)
+            if not os.path.exists(BASE_PATH):
+                continue
 
-        
-df = pd.DataFrame({'baselines':baselines_,'rmse':rmses_,'seeds':seeds_})
-df.to_csv(f'ate_estimates/{baseline_to_use}_ate_estimates.csv',index=False)
-print('ALL DONE')
+            with open(os.path.join(BASE_PATH,'graph.pkl'),'rb') as fl:
+                graph = pl.load(fl)
+
+            df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
+
+            true_estimate = get_causal_estimate(graph,df)
+
+            # Get posterior
+            count=0
+            posterior_file_path = os.path.join(BASE_PATH,'posterior.npy')
+            if not os.path.isfile(posterior_file_path):
+                continue
+            posterior = np.load(posterior_file_path)
+            st_time = time.time()
+            causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:]) for i in range(posterior.shape[0])])
+            with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates2/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
+                np.save(fl,causal_estimates)
+            #causal_estimates = np.full(posterior.shape[0], fill_value=1) 
+            print(f'Time taken for one posterior of size {posterior.shape[0]} was {time.time()-st_time}')
+            true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
+            with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates2/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
+                np.save(fl,true_causal_estimates)
+            rmse_value = calculate_rmse(causal_estimates,true_causal_estimates)
+            
+            baselines_.append(baseline)
+            rmses_.append(rmse_value)
+            seeds_.append(seed)
+
+            
+    df = pd.DataFrame({'baselines':baselines_,'rmse':rmses_,'seeds':seeds_})
+    df.to_csv(f'ate_estimates2/{baseline_to_use}_{SEED_TO_USE}_ate_estimates.csv',index=False)
+    print('ALL DONE')
 
 
 
-'''
-(Pdb) df.max(axis=0)
-Unnamed: 0    99.000000
-A              0.548883
-B              0.331622
-C              0.286164
-D              0.933619
-E              0.192666
-F              0.239168
-G              0.238359
-H              0.421542
-I              1.018528
-J              0.314951
-K              0.315432
-L              0.247244
-M              1.427548
-N              0.354442
-O              0.288996
-P              0.248688
-Q              0.217793
-R              0.442156
-S              0.477876
-T              0.574680
-________________________________
-Min
-
-(Pdb) df.min(axis=0)
-Unnamed: 0    0.000000
-A            -0.487034
-B            -0.340195
-C            -0.228957
-D            -1.053950
-E            -0.389942
-F            -0.242183
-G            -0.251634
-H            -0.482522
-I            -1.022796
-J            -0.304008
-K            -0.463249
-L            -0.236058
-M            -1.361267
-N            -0.410836
-O            -0.243765
-P            -0.292809
-Q            -0.228311
-R            -0.426401
-S            -0.651585
-T            -0.626124
-dtype: float64
-
-'''
+    

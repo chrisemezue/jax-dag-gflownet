@@ -131,3 +131,9 @@ dmypy.json
 # Data
 /data/*
 !/data/.gitkeep
+
+
+
+# Slurm files
+slurm2/*
+slurm/*
