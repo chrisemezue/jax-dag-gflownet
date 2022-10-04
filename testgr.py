@@ -6,6 +6,7 @@ import numpy as np
 import networkx as nx
 from dowhy import CausalModel
 import pickle as pl
+from joblib import Parallel, delayed
 from typing import Optional
 
 node_to_index = {
@@ -28,22 +29,17 @@ BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
 def get_causal_estimate(graph,df):
     model = CausalModel(data=df, treatment=['K'],outcome='M',graph=nx.DiGraph(graph),use_graph_as_is=True)
     # II. Identify causal effect and return target estimands
-    st = time.time()
     identified_estimand = model.identify_effect()
-    #print(f"Time for identifying effect: {time.time()- st}")
-    #st_est = time.time()
     causal_estimate_reg = model.estimate_effect(identified_estimand,
             target_units='ate',
             control_value=0,
             treatment_value=1,
             method_name="backdoor.linear_regression",
             test_significance=False,confidence_intervals=False)
-    #print(f"Time to do linear regression: {time.time()-st_est}")
     causal_estimate = causal_estimate_reg.value
-    #print("Causal Estimate is " + str(causal_estimate_reg.value))
     return causal_estimate
 
-def get_estimate_from_posterior(each_posterior):
+def get_estimate_from_posterior(each_posterior,index_to_node,df):
     graph_sample = nx.from_numpy_array(each_posterior,create_using=nx.DiGraph)
     if nx.is_directed_acyclic_graph(graph_sample): # Check it is acyclic DAG
         graph_sample_relabeled = nx.relabel_nodes(graph_sample, index_to_node)
@@ -82,9 +78,9 @@ def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = N
 
 if __name__=="__main__":
     baseline_to_use = sys.argv[1]
-    SEED_TO_USE = sys.argv[2]
+    SEED_TO_USE = [sys.argv[2]]
     for baseline in [baseline_to_use]:
-        for seed in [SEED_TO_USE]:
+        for seed in SEED_TO_USE:
             BASE_PATH = os.path.join(os.path.join(BASELINE_FOLDER,baseline),str(seed))
 
             if not os.path.exists(BASE_PATH):
@@ -102,13 +98,22 @@ if __name__=="__main__":
             posterior_file_path = os.path.join(BASE_PATH,'posterior.npy')
             if not os.path.isfile(posterior_file_path):
                 continue
-            posterior = np.load(posterior_file_path)
+            posterior = np.load(posterior_file_path)[:16,:,:]
+            #causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:]) for i in range(posterior.shape[0])])
+            import pdb;pdb.set_trace()
+            #print(f'Time taken without threading: {time.time()-st_time}')
             st_time = time.time()
-            causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:]) for i in range(posterior.shape[0])])
+            #len(os.sched_getaffinity(0))
+            results = Parallel(n_jobs=2)(
+                    delayed(get_estimate_from_posterior)(posterior[i,:,:],index_to_node,df)
+                    for i in range(posterior.shape[0])
+                    )
+            import pdb;pdb.set_trace()
+            print(f'Time taken for one posterior of size {posterior.shape[0]} was {time.time()-st_time}')
+
             with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates2/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,causal_estimates)
             #causal_estimates = np.full(posterior.shape[0], fill_value=1) 
-            print(f'Time taken for one posterior of size {posterior.shape[0]} was {time.time()-st_time}')
             true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
             with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates2/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,true_causal_estimates)
