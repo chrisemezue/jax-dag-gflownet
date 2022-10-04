@@ -83,9 +83,7 @@ def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = N
     """
     return np.square(np.subtract(a, b))
 
-#0 5 10 15 20 25
-0,1,2,3,4
-5,6,7,8,9
+
 if __name__=="__main__":
     baseline_to_use = sys.argv[1]
     SEED_TO_USE = []
@@ -110,30 +108,24 @@ if __name__=="__main__":
             posterior_file_path = os.path.join(BASE_PATH,'posterior.npy')
             if not os.path.isfile(posterior_file_path):
                 continue
-            #posterior = np.load(posterior_file_path)
-            posterior = np.load(posterior_file_path)[:10,:,:]
-            #st_time = time.time()
+            posterior = np.load(posterior_file_path)
+            #posterior = np.load(posterior_file_path)[:10,:,:] # for debugging
+            
+            # Without parallelization
             #causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:],index_to_node,BASE_PATH) for i in range(posterior.shape[0])])
 
-            #print(f'Time taken without threading: {time.time()-st_time}')
-            #st_time = time.time()
-            #len(os.sched_getaffinity(0))
             results = Parallel(n_jobs=len(os.sched_getaffinity(0)))(
                     delayed(get_estimate_from_posterior)(posterior[i,:,:],index_to_node,BASE_PATH)
                     for i in range(posterior.shape[0])
                     )
-            #print(f'Time taken WITH threading: {time.time()-st_time}')
             causal_estimates = np.asarray(results)
             df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
 
 
             true_estimate = get_causal_estimate(graph,df)
 
-            #print(f'Time taken for one posterior of size {posterior.shape[0]} was {time.time()-st_time}')
-
             with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates3/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,causal_estimates)
-            #causal_estimates = np.full(posterior.shape[0], fill_value=1) 
             true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
             with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates3/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,true_causal_estimates)
