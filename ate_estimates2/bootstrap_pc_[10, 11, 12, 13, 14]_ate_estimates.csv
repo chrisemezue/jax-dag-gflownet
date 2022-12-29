@@ -1,0 +1,6 @@
+baselines,rmse,seeds
+bootstrap_pc,0.033993027954009235,10
+bootstrap_pc,0.0,11
+bootstrap_pc,0.06485192209565378,12
+bootstrap_pc,0.005648226896798576,13
+bootstrap_pc,0.003955326235972228,14

@@ -67,7 +67,12 @@ def calculate_rmse(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> 
 
     Returns: (ndarray) RMSE value taken along axis `axis`.
     """
-    return np.sqrt(np.mean(np.square(np.subtract(a, b)), axis=axis))
+    # Remove `None` values from the RMSE calculation: encountered it in `dibs`
+    mask = a!=None
+    a_ = a[mask]
+    b_ = b[mask]
+    ####################
+    return np.sqrt(np.mean(np.square(np.subtract(a_, b_)), axis=axis))
 
 
 def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> np.ndarray:
@@ -124,10 +129,10 @@ if __name__=="__main__":
 
             true_estimate = get_causal_estimate(graph,df)
 
-            with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates3/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
+            with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates2/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,causal_estimates)
             true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
-            with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates3/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
+            with open(f'/home/mila/c/chris.emezue/scratch/ate_estimates2/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,true_causal_estimates)
             rmse_value = calculate_rmse(causal_estimates,true_causal_estimates)
             
@@ -137,11 +142,7 @@ if __name__=="__main__":
 
     if len(baselines_)!=0 and len(rmses_)!=0 and len(seeds_)!=0:        
         df = pd.DataFrame({'baselines':baselines_,'rmse':rmses_,'seeds':seeds_})
-        df.to_csv(f'ate_estimates3/{baseline_to_use}_{SEED_TO_USE}_ate_estimates.csv',index=False)
+        df.to_csv(f'ate_estimates2/{baseline_to_use}_{SEED_TO_USE}_ate_estimates.csv',index=False)
     else:
         print("List was empty so nothing was done")
-    print(f'ALL DONE for seeds: {SEED_TO_USE}')
-
-
-
-    
+    print(f'ALL DONE for seeds: {SEED_TO_USE}') 

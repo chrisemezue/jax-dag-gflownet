@@ -1,0 +1,6 @@
+baselines,rmse,seeds
+dag_gflownet,1.6844790256562352,0
+dag_gflownet,0.292784244634405,1
+dag_gflownet,0.017123794013343824,2
+dag_gflownet,0.04277685079850657,3
+dag_gflownet,0.10633705863548706,4
