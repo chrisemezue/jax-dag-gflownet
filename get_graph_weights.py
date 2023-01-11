@@ -10,8 +10,8 @@ from tqdm import tqdm
 def get_weights(graph):
     weight_list = []
     for cpd in graph.cpds:
-        source_node = cpd.variable
-        for node, weight in zip(cpd.variables,cpd.mean.tolist()):
+        node = cpd.variable
+        for source_node, weight in zip(cpd.variables,cpd.mean.tolist()):
             if source_node!=node:
                 weight_list.append((source_node,node,weight))
     return weight_list
