@@ -12,5 +12,5 @@
 ###########cluster information above this line
 source /home/mila/c/chris.emezue/gsl-env/bin/activate
 
-#python -m pdb testgr.py dibs 25
-python causal_inference.py $1 $SLURM_ARRAY_TASK_ID
+python causal_inference_special_cases.py dibs 25
+#python causal_inference_special_cases.py $1 $SLURM_ARRAY_TASK_ID

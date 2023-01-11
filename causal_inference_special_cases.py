@@ -28,22 +28,98 @@ seeds_ = []
 
 BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
 
+# New idea: find treatment and outcome variables based on interesting scenarios
+# then evaluate the posterior samples of the baselines based on the selected variables.
 
-# New idea
-# Choose two variables apriori: treatment and effect (X & Y)
-# We are interested in X -> Y | E[Y|do(X)]
-# for each baseline
-# look at its groundtruth graph
-    # find all paths from X to Y
-    # get the true coefficients of the edges
-    # path tracing to find the effect of X-> Y
+def get_adj_of_edge(variable,graph):
+    # Given a variable, find the set of its children, using the graph
+    adj_variables = graph._adj[variable]
+    if adj_variables=={}:
+        return []
+    return list(adj_variables.keys())
 
-# for each posterior
-    # transform it into a graph
-    # find all paths from X to Y
-    # regress using the data to find the estimated coefficients of the edges
-    # path tracing to find the effect of X-> Y
+def get_pred_of_edge(variable,graph):
+    # Given a variable, find the set of its children, using the graph
+    adj_variables = graph._pred[variable]
+    if adj_variables=={}:
+        return []
+    return list(adj_variables.keys())
 
+
+def get_pairwise_elements(list_):
+    pairwise = []
+    for i in range(len(list_)):
+        for j in range(len(list_)):
+            if list_[i]!=list_[j]:
+                pairwise.append((list_[i],list_[j]))
+    return pairwise
+
+def treatment_effect_with_cofounder(graph):
+    
+    """
+    Given a graph, we want to find one treatment and effect satisfying the criterion of having a confounder.
+    Where there are many such pairs, we sample one pair randomly.
+    
+    """
+    all_edges = list(graph.edges)
+    confounders = [(edge[0],edge[1],set(get_pred_of_edge(edge[0],graph)).intersection(set(get_pred_of_edge(edge[1],graph)))) for edge in all_edges]
+    variables_of_interest = [c for c in confounders if len(c[2])!=0]
+    variables_of_interest = [(v[0],v[1],c)  for v in variables_of_interest for c in v[2]]
+    return variables_of_interest
+
+
+
+def treatment_effect_with_cofounder_no_effect(graph):
+
+    """
+    Given a graph, we want to find one treatment and effect satisfying the criterion of having a confounder but no effect
+    between  the treatment and outcome variables.
+
+    Where there are many such pairs, we sample one pair randomly.
+
+    """
+    all_nodes = list(graph.nodes)
+    all_edges = list(graph.edges)
+
+    variables_of_interest = [(a_[0],a_[1],node) if a_ not in all_edges else None for node in all_nodes for a_ in get_pairwise_elements(get_adj_of_edge(node,graph)) ]
+    variables_of_interest = [v for v in variables_of_interest if v is not None]
+
+    return variables_of_interest
+
+def treatment_effect_with_mediator(graph):
+
+    """
+    Given a graph, we want to find one treatment and effect satisfying the criterion of having a mediator variable.
+
+    Where there are many such pairs, we sample one pair randomly.
+
+    """
+    all_edges = list(graph.edges)
+    edges_with_mediator = [(edge[0],edge[1],list(nx.all_simple_paths(graph,edge[0],edge[1]))) for edge in all_edges ]
+    variables_of_interest = [(e[0],e[1],e[2]) for e in edges_with_mediator if e[2]!=[] and len(e[2])>1]
+    return variables_of_interest
+
+def treatment_effect_with_common_child(graph):
+
+    """
+    Given a graph, we want to find one treatment and effect satisfying the criterion of 
+    the the treatment and outcome variables having the same child variable.
+
+    Where there are many such pairs, we sample one pair randomly.
+
+    """
+    all_edges = list(graph.edges)
+    confounders = [(edge[0],edge[1],set(get_adj_of_edge(edge[0],graph)).intersection(set(get_adj_of_edge(edge[1],graph)))) for edge in all_edges]
+    variables_of_interest = [c for c in confounders if len(c[2])!=0]
+    return variables_of_interest
+
+
+VARIABLE_SELECTION_MAPPING = {
+    'treatment_effect_with_common_child':treatment_effect_with_common_child,
+    'treatment_effect_with_mediator':treatment_effect_with_mediator,
+    'treatment_effect_with_cofounder_no_effect':treatment_effect_with_cofounder_no_effect,
+    'treatment_effect_with_cofounder':treatment_effect_with_cofounder
+    }
 
 
 def find_all_paths(graph,variable_x=0,variable_y=3):
@@ -156,8 +232,8 @@ if __name__=="__main__":
 
             with open(os.path.join(BASE_PATH,'graph.pkl'),'rb') as fl:
                 graph = pl.load(fl)
-
-
+            import pdb;pdb.set_trace()
+            variables_of_interest = treatment_effect_with_mediator(graph)
             # Get posterior
             count=0
             posterior_file_path = os.path.join(BASE_PATH,'posterior.npy')
