@@ -19,4 +19,6 @@ Some important variables here are
     Inside `run_baselines_lingauss20.sh` you specify the number of variables, edges as well as  the `folder` -- this is an important parameter because it is where the experimental graph and data as well as the learned posterior will be stored. You will need this for phase 2️⃣.
 
 4. **Running for `bootstrap_pc`, `bootstrap_ges`**: For these two bootstrap-based baselines, we have separated sh files for them -- `run_lingauss_bootstrap_pc.sh` for `bootstrap_pc`  and `run_lingauss_bootstrap_ges.sh` for `bootstrap_ges`. Again, here you can control the number of variables, edges as well as  the `folder`
-5. **Running for dag-gfn**: The bash file called [`job.sh`](https://github.com/chrisemezue/gflownet_sl/blob/chris/ci/job.sh) handles it.
+5. **Running for dag-gfn**: The bash file called [`job.sh`](https://github.com/chrisemezue/gflownet_sl/blob/chris/ci/job.sh) handles it. Under the hood, it uses the `main.py` python file and stores all required files on WANDB. Running `job.sh` already enables parallelization by running the different seeds on separate cluster nodes.
+
+    For WANDB, I use this tag structure `tags=[f'causal_inference_{args.num_samples}'] to distinguish the different run results I am running for the causal inference. Another thing I did was to configure the name of the wandb instance to be the seed number. All these were done to enable easy downloading of the required files for causal inference in phase 2️⃣.
