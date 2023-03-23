@@ -30,4 +30,16 @@ Now that we have done causal inference, and have the true graph, observational d
 
 For now, we are mostly concerned with average treatment effect (ATE). I explain it in some detail [here](https://www.notion.so/chrisemezue/My-Mila-Project-29df7ef1d7954505abae8ab5361b2410?pvs=4#4e2ca9d22807470c80679d726652a679).
 
-Our codebase for this is at `/home/mila/c/chris.emezue/jax-dag-gflownet`.
+Our codebase for this can be found [here on Github](https://github.com/chrisemezue/jax-dag-gflownet/tree/master).
+
+1. First need to cd into our codebase at `/home/mila/c/chris.emezue/jax-dag-gflownet`.
+2. Before doing any causal inference, there are a number of important preliminary steps to take such that the whole setup is ready when we want it.
+3. **Extract and compile relevant files**: It is important to extract and compile the 1) learned posterior, 2) true graph and 3) observational data for each of the baselines and for each of the seeds. These files are denoted as `FILES = ['posterior_estimate.npy','data.csv','graph.pkl']`.
+
+    Remember the `folder` variable from phase 1️⃣ ? This is where it is needed. In this part of the experiment, we will set it to the variable `BASELINE_FOLDER`. For smoothness, we should keep all the files under one and the same `BASELINE_FOLDER` and in the same format. 
+
+    So for the following baselines, we only need to set their `folder` variable to anywhere we see `BASELINE_FOLDER` in the causal inference code: `['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3']`. 
+
+    For dag-gfn, since the files are stored on WANDB, we need to retrieve them. That is what the file `download_files_wandb.py` does. You should set the `ROOT_FOLDER_DAG_GFN` to the chosen `BASELINE_FOLDER` so it is also saved there. 
+
+4. **Getting the true graph weights**: Now that we have all the necessary files extracted and organized, we can move on to the next phase, which involves calculating the true graph weights. We are doing this because we are using an approach inspired by [this paper](https://ftp.cs.ucla.edu/pub/stat_ser/r432.pdf). The `get_graph_weights.py` file handles this.
