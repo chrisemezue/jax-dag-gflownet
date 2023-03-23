@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+gadget,0.996496443293778,5,treatment_effect_with_mediator
+gadget,0.419147770622397,6,treatment_effect_with_mediator
+gadget,0.7019129631652604,7,treatment_effect_with_mediator
+gadget,0.10242807009695125,8,treatment_effect_with_mediator
+gadget,0.4111989113722915,9,treatment_effect_with_mediator

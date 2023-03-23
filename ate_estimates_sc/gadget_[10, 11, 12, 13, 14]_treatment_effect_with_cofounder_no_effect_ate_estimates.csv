@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+gadget,0.08594310746911621,10,treatment_effect_with_cofounder_no_effect
+gadget,0.9091027443233154,11,treatment_effect_with_cofounder_no_effect
+gadget,0.3145462325736924,12,treatment_effect_with_cofounder_no_effect
+gadget,0.06333040227564948,13,treatment_effect_with_cofounder_no_effect
+gadget,0.23458152040150373,14,treatment_effect_with_cofounder_no_effect

@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+mc3,2.387079810953696,20,treatment_effect_with_mediator
+mc3,1.4689830842282063,21,treatment_effect_with_mediator
+mc3,0.30467822185302645,22,treatment_effect_with_mediator
+mc3,0.5446530633223023,23,treatment_effect_with_mediator
+mc3,2.2215280592274818,24,treatment_effect_with_mediator

@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+bootstrap_pc,1.0852632756208713,5,treatment_effect_with_cofounder
+bootstrap_pc,1.409338381658672,6,treatment_effect_with_cofounder
+bootstrap_pc,1.0952444258220826,7,treatment_effect_with_cofounder
+bootstrap_pc,0.16516333805262468,8,treatment_effect_with_cofounder
+bootstrap_pc,0.16027021337305994,9,treatment_effect_with_cofounder

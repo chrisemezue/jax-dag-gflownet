@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+dibs,0.2829802398799535,10,treatment_effect_with_common_child
+dibs,1.5578241106983124,11,treatment_effect_with_common_child
+dibs,1.0536633216143898,12,treatment_effect_with_common_child
+dibs,0.5822190917992979,13,treatment_effect_with_common_child
+dibs,0.27064558944019546,14,treatment_effect_with_common_child

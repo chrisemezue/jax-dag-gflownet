@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+gadget,0.3526161961685362,10,treatment_effect_with_common_child
+gadget,1.442748922823483,11,treatment_effect_with_common_child
+gadget,1.0904548256244861,12,treatment_effect_with_common_child
+gadget,0.559415698293566,13,treatment_effect_with_common_child
+gadget,0.33021284207292506,14,treatment_effect_with_common_child

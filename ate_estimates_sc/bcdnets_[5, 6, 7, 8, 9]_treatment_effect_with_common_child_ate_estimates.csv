@@ -1,0 +1,4 @@
+baselines,rmse,seeds,cases
+bcdnets,1.5696956024589206,5,treatment_effect_with_common_child
+bcdnets,0.6472924513872796,7,treatment_effect_with_common_child
+bcdnets,0.06331808488130262,9,treatment_effect_with_common_child

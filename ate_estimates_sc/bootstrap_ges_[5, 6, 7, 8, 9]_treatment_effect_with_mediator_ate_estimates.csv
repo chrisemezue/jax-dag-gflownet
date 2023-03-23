@@ -1,0 +1,4 @@
+baselines,rmse,seeds,cases
+bootstrap_ges,0.7719707924086304,7,treatment_effect_with_mediator
+bootstrap_ges,0.18946539304354862,8,treatment_effect_with_mediator
+bootstrap_ges,0.3791034012802084,9,treatment_effect_with_mediator

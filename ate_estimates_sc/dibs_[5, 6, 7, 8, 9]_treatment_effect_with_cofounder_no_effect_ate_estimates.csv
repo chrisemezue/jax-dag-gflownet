@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+dibs,0.003077755496562798,5,treatment_effect_with_cofounder_no_effect
+dibs,0.0,6,treatment_effect_with_cofounder_no_effect
+dibs,0.24709416800179504,7,treatment_effect_with_cofounder_no_effect
+dibs,0.0,8,treatment_effect_with_cofounder_no_effect
+dibs,0.007314008208774707,9,treatment_effect_with_cofounder_no_effect

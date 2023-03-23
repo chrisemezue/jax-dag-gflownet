@@ -1,0 +1,5 @@
+baselines,rmse,seeds,cases
+bootstrap_pc,0.9084072700118869,20,treatment_effect_with_common_child
+bootstrap_pc,2.161933700118762,21,treatment_effect_with_common_child
+bootstrap_pc,0.1921332414149731,22,treatment_effect_with_common_child
+bootstrap_pc,0.9336778179771139,23,treatment_effect_with_common_child

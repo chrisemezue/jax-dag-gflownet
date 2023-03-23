@@ -1,0 +1,4 @@
+baselines,rmse,seeds,cases
+bootstrap_ges,0.9395440480705588,7,treatment_effect_with_common_child
+bootstrap_ges,0.337069200475655,8,treatment_effect_with_common_child
+bootstrap_ges,0.18400612082834655,9,treatment_effect_with_common_child

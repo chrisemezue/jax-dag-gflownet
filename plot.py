@@ -3,9 +3,9 @@ import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from testgr import calculate_squared_diff,calculate_rmse
+#from testgr import calculate_squared_diff,calculate_rmse
 
-FOLDER = '/home/mila/c/chris.emezue/jax-dag-gflownet/ate_estimates2'
+FOLDER = '/home/mila/c/chris.emezue/jax-dag-gflownet/ate_estimates_sc'
 
 files = [os.path.join(FOLDER,f.name) for f in os.scandir(FOLDER)]
 
@@ -16,12 +16,14 @@ df_files = pd.concat([pd.read_csv(f) for f in files])
 fig, ax = plt.subplots()
 
 #import pdb;pdb.set_trace()
-
-ax = sns.boxplot(y="rmse",x="baselines",data=df_files)
-ax.set_title('RMSE-ATE for baselines')
+g = sns.FacetGrid(df_files,  row="cases")
+ax = g.map_dataframe(sns.violinplot, y="rmse",x="baselines")
+#ax = sns.boxplot(y="rmse",x="baselines",data=df_files)
+#import pdb;pdb.set_trace()
+#ax.set_titles('RMSE-ATE for baselines')
 plt.xticks(rotation=90)
 plt.tight_layout()
-fig.savefig('rmse_ate_estimates_BOXPLOT_ALL')
+ax.savefig('rmse_ate_estimates_BOXPLOT_ALL_20')
 
 '''
 all_baselines = []

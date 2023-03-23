@@ -137,3 +137,4 @@ dmypy.json
 # Slurm files
 slurm2/*
 slurm/*
+slurm_sc/*

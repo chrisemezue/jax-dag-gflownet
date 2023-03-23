@@ -1,0 +1,3 @@
+baselines,rmse,seeds,cases
+bcdnets,0.26380248773521864,21,treatment_effect_with_cofounder_no_effect
+bcdnets,0.0,23,treatment_effect_with_cofounder_no_effect

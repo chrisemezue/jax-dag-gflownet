@@ -286,8 +286,8 @@ if __name__=="__main__":
             posterior_file_path = os.path.join(BASE_PATH,'posterior.npy')
             if not os.path.isfile(posterior_file_path):
                 continue
-            #posterior = np.load(posterior_file_path)
-            posterior = np.load(posterior_file_path)[:1,:,:] # for debugging
+            posterior = np.load(posterior_file_path)
+            #posterior = np.load(posterior_file_path)[:1,:,:] # for debugging
             
             # Without parallelization
             #causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:],index_to_node,BASE_PATH) for i in range(posterior.shape[0])])
@@ -301,10 +301,10 @@ if __name__=="__main__":
 
             true_estimate = get_true_causal_estimate(true_graph,BASE_PATH,VARIABLE_DICT)
 
-            with open(f'/home/mila/c/chris.emezue/scratch/causal_inference/{OUTPUT_FOLDER_NAME}/{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
+            with open(f'/home/mila/c/chris.emezue/scratch/causal_inference/{OUTPUT_FOLDER_NAME}/{baseline_to_use}_{seed}_{CAUSAL_INFERENCE_CASE}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,causal_estimates)
             true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
-            with open(f'/home/mila/c/chris.emezue/scratch/causal_inference/{OUTPUT_FOLDER_NAME}/true_{baseline_to_use}_{seed}_ate_estimates.npy', 'wb') as fl:
+            with open(f'/home/mila/c/chris.emezue/scratch/causal_inference/{OUTPUT_FOLDER_NAME}/true_{baseline_to_use}_{seed}_{CAUSAL_INFERENCE_CASE}_ate_estimates.npy', 'wb') as fl:
                 np.save(fl,true_causal_estimates)
             rmse_value = calculate_rmse(causal_estimates,true_causal_estimates)
             
@@ -317,7 +317,7 @@ if __name__=="__main__":
         case_list = [CAUSAL_INFERENCE_CASE for i in range(len(rmses_))]
       
         df = pd.DataFrame({'baselines':baselines_,'rmse':rmses_,'seeds':seeds_,'cases':case_list})
-        df.to_csv(f'{OUTPUT_FOLDER_NAME}/{baseline_to_use}_{SEED_TO_USE}_ate_estimates.csv',index=False)
+        df.to_csv(f'{OUTPUT_FOLDER_NAME}/{baseline_to_use}_{SEED_TO_USE}_{CAUSAL_INFERENCE_CASE}_ate_estimates.csv',index=False)
     else:
         print("List was empty so nothing was done")
     print(f'ALL DONE for seeds: {SEED_TO_USE}') 

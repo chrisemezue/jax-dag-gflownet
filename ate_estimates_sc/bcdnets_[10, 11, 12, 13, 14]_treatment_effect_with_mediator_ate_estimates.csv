@@ -1,0 +1,4 @@
+baselines,rmse,seeds,cases
+bcdnets,0.050207824351201864,11,treatment_effect_with_mediator
+bcdnets,0.013978705531417335,12,treatment_effect_with_mediator
+bcdnets,1.318485850113992,13,treatment_effect_with_mediator

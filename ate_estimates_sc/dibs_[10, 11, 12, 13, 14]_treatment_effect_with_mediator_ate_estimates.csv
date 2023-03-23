@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+dibs,2.1610398562548405,10,treatment_effect_with_mediator
+dibs,0.05020782435120186,11,treatment_effect_with_mediator
+dibs,0.013978705531417335,12,treatment_effect_with_mediator
+dibs,1.2953168743460037,13,treatment_effect_with_mediator
+dibs,0.2880081196771513,14,treatment_effect_with_mediator

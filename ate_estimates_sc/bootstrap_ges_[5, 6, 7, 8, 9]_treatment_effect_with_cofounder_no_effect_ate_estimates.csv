@@ -1,0 +1,4 @@
+baselines,rmse,seeds,cases
+bootstrap_ges,1.137986247809931,7,treatment_effect_with_cofounder_no_effect
+bootstrap_ges,0.038785252605748506,8,treatment_effect_with_cofounder_no_effect
+bootstrap_ges,0.2631089832561468,9,treatment_effect_with_cofounder_no_effect

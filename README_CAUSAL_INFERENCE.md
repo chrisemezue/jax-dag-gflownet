@@ -6,7 +6,7 @@
 ## What to do
 There are two parts to this project: the causal discovery pipeline and the causal inference (ATE) pipeline
 
-### 1️⃣Causal Discovery pipeline
+### 1️⃣ Causal Discovery pipeline
 This involves training the causal discovery baseline models. 
 Some important variables here are
 - `num_variables`
@@ -22,3 +22,12 @@ Some important variables here are
 5. **Running for dag-gfn**: The bash file called [`job.sh`](https://github.com/chrisemezue/gflownet_sl/blob/chris/ci/job.sh) handles it. Under the hood, it uses the `main.py` python file and stores all required files on [WANDB](https://wandb.ai/tristandeleu_mila_01/gflownet-bayesian-structure-learning/table?workspace=user-chrisemezue). Running `job.sh` already enables parallelization by running the different seeds on separate cluster nodes.
 
     For WANDB, I use this tag structure `tags=[f'causal_inference_{args.num_samples}'] to distinguish the different run results I am running for the causal inference. Another thing I did was to configure the name of the wandb instance to be the seed number. All these were done to enable easy downloading of the required files for causal inference in phase 2️⃣.
+
+
+### 2️⃣ Causal Inference pipeline
+
+Now that we have done causal inference, and have the true graph, observational data and learned posterior for each of the baselines, it is time to do causal inference.
+
+For now, we are mostly concerned with average treatment effect (ATE). I explain it in some detail [here](https://www.notion.so/chrisemezue/My-Mila-Project-29df7ef1d7954505abae8ab5361b2410?pvs=4#4e2ca9d22807470c80679d726652a679).
+
+Our codebase for this is at `/home/mila/c/chris.emezue/jax-dag-gflownet`.

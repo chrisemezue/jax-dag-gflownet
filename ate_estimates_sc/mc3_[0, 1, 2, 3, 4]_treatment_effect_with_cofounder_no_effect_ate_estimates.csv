@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+mc3,1.3840004604157172,0,treatment_effect_with_cofounder_no_effect
+mc3,0.213316562356801,1,treatment_effect_with_cofounder_no_effect
+mc3,0.1495924547088818,2,treatment_effect_with_cofounder_no_effect
+mc3,0.4546956187474843,3,treatment_effect_with_cofounder_no_effect
+mc3,0.798135290288431,4,treatment_effect_with_cofounder_no_effect

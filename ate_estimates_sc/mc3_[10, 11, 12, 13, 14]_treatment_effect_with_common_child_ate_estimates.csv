@@ -1,0 +1,6 @@
+baselines,rmse,seeds,cases
+mc3,0.3968649490331868,10,treatment_effect_with_common_child
+mc3,1.2594999116862942,11,treatment_effect_with_common_child
+mc3,1.4496272387639315,12,treatment_effect_with_common_child
+mc3,0.5477981621249993,13,treatment_effect_with_common_child
+mc3,0.30214180098248716,14,treatment_effect_with_common_child
