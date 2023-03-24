@@ -63,4 +63,4 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
 
 
-**Plotting the results**:
+6. **Plotting the results**:
