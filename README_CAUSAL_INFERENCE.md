@@ -47,9 +47,9 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
 5. **Calculating ATE**: This is where the RMSE of true ATE and predicted ATE from the posterior samples are calculated. Given a baseline model and its set of posterior samples, let me walk you through the ATE calculation using one posterior sample -- which is essentially one predicted causal graph. Given a treatment and effect variables - `T` and `E` respectively -- we are interested in `ATE(T,E)`. I explain it in some detail [here](https://www.notion.so/chrisemezue/My-Mila-Project-29df7ef1d7954505abae8ab5361b2410?pvs=4#4e2ca9d22807470c80679d726652a679).
 
-For ATE calculation in general, the `run.sh` file handles its sbatching and looping through the baselines and seeds (or seed ranges).
+    For ATE calculation in general, the `run.sh` file handles its sbatching and looping through the baselines and seeds (or seed ranges).
 
-We currently have two approaches to this, distinguished by how we choose `T` and `E`:
+    We currently have two approaches to this, distinguished by how we choose `T` and `E`:
 
     **👌🏽Total ATE**: Here we loop through all the possible treatment and effect variable combinations in our setting. Here we have 20 variables, so that makes it `20C2`. This is obviously very computationally expensive, and we take some steps to improve on it. 
 
