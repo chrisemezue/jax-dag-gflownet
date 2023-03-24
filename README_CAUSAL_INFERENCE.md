@@ -63,4 +63,4 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
 
 
-6. **Plotting the results**:
+6. **Plotting the results**: Here we want to plot the RMSE-ATEs that we got from the previous step. For that we use `plot.py`. We just need to specify the folder where we saved the CSV files: `FOLDER = '/home/mila/c/chris.emezue/jax-dag-gflownet/ate_estimates_sc'`.
