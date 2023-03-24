@@ -42,4 +42,25 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
     For dag-gfn, since the files are stored on WANDB, we need to retrieve them. That is what the file `download_files_wandb.py` does. You should set the `ROOT_FOLDER_DAG_GFN` to the chosen `BASELINE_FOLDER` so it is also saved there. 
 
-4. **Getting the true graph weights**: Now that we have all the necessary files extracted and organized, we can move on to the next phase, which involves calculating the true graph weights. We are doing this because we are using an approach inspired by [this paper](https://ftp.cs.ucla.edu/pub/stat_ser/r432.pdf). The `get_graph_weights.py` file handles this.
+4. **Getting the true graph weights**: Now that we have all the necessary files extracted and organized, we can move on to the next phase, which involves calculating the true graph weights. We are doing this because we are using an approach inspired by [this paper](https://ftp.cs.ucla.edu/pub/stat_ser/r432.pdf). The `get_graph_weights.py` file handles this. Inside the file you need to specify the `BASELINE_FOLDER`. The true ATE details will be saved in a `true_edge_weights.json` file inside the `BASELINE_FOLDER` folder.
+
+
+5. **Calculating ATE**: This is where the RMSE of true ATE and predicted ATE from the posterior samples are calculated. Given a baseline model and its set of posterior samples, let me walk you through the ATE calculation using one posterior sample -- which is essentially one predicted causal graph. Given a treatment and effect variables - `T` and `E` respectively -- we are interested in `ATE(T,E)`. I explain it in some detail [here](https://www.notion.so/chrisemezue/My-Mila-Project-29df7ef1d7954505abae8ab5361b2410?pvs=4#4e2ca9d22807470c80679d726652a679).
+
+For ATE calculation in general, the `run.sh` file handles its sbatching and looping through the baselines and seeds (or seed ranges).
+
+We currently have two approaches to this, distinguished by how we choose `T` and `E`:
+
+    **👌🏽Total ATE**: Here we loop through all the possible treatment and effect variable combinations in our setting. Here we have 20 variables, so that makes it `20C2`. This is obviously very computationally expensive, and we take some steps to improve on it. 
+
+    The file called `causal_inference.py` handles this type of ATE calculation. You need to specify some variables in the file: the baseline folder, where to save the predicted estimates, etc. Then tweak `run.sh` to run the required python file before finally doing `bash run.sh`.
+
+    **👋🏽Special-case ATE**: Instead of looping through all the combinations, we focus on a few interesting treatment-effect cases and only calculate ATE for such variables. Further explanation can be found [here](https://www.notion.so/chrisemezue/Timeline-and-Experiments-to-run-7c02b1fe955749bfaaeccaa27423de3b?pvs=4#13bbfe1c482d40c2b60a968318e0a0b9).
+
+    The file called `causal_inference_special_cases.py` handles the ATE for the special cases. Again, you need to set some variables inside, then specify the file inside `job_ci.sh`, before finally running `bash run.sh` to set it in motion.
+
+    > **Result of this operation:** depending on the baseline models you chose, the result you should expect from this operation are CSV files showing the ATE for each seed and baseline model. Due to parallelization, it is chunked into multiple CSV files all housed in one folder, which is specified inside the corresponding python files above. You can then use these CSV files containing the results to plot or whatever.
+
+
+
+**Plotting the results**:
