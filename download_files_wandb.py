@@ -27,15 +27,15 @@ def get_files(runs, filename, root_folder):
 
 
 if __name__ == '__main__':
-    ROOT_FOLDER_DAG_GFN = '/home/mila/c/chris.emezue/scratch/test_wandb'
+    #ROOT_FOLDER_DAG_GFN = '/home/mila/c/chris.emezue/scratch/test_wandb/dag-gfn' # for debugging
+    ROOT_FOLDER_DAG_GFN= '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/dag-gfn' # the real deal, be careful
 
 
     # Download from runs selected with a tag
     api = wandb.Api()
     runs = api.runs('tristandeleu_mila_01/gflownet-bayesian-structure-learning', 
-        filters={'tags': {'$in': ['causal_inference']}}
+        filters={'tags': {'$in': ['causal_inference_main_20']}}
     )
-    import pdb; pdb.set_trace()
     FILES = ['posterior_estimate.npy','data.csv','graph.pkl']
     for file in tqdm(FILES, desc="Downloading files..."):
         get_files(runs, file, ROOT_FOLDER_DAG_GFN)

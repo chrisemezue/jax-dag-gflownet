@@ -26,7 +26,8 @@ rmses_ = []
 seeds_ = []
 
 
-BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
+#BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
+BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/'
 
 
 @wrap_non_picklable_objects

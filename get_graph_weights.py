@@ -29,7 +29,9 @@ BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20'
 
 
 if __name__=="__main__":
-    baseline_to_use = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3']
+    #baseline_to_use = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3']
+    baseline_to_use = ['dag-gfn']
+
     SEED_TO_USE = [i for i in range(26)]
     variance=[]
     with tqdm(total = len(baseline_to_use)*len(SEED_TO_USE)) as pbar:
