@@ -53,14 +53,9 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
     **👌🏽Total ATE**: Here we loop through all the possible treatment and effect variable combinations in our setting. Here we have 20 variables, so that makes it 400. This is obviously very computationally expensive, and we take some steps to improve on it. 
 
-<<<<<<< HEAD
     > OLD: The file called `causal_inference.py` handles this type of ATE calculation. You need to specify some variables in the file: the baseline folder, where to save the predicted estimates, etc. Then tweak `run.sh` to run the required python file before finally doing `bash run.sh`.
 
     The file called `causal_inference_main.py` handles this type of ATE calculation. You need to specify some variables in the file: the baseline folder (`BASELINE_FOLDER`), where to save the predicted estimates (`ATE_DATAFRAME_FOLDER`), etc. Then tweak `job_ci_main.sh` to run the required python file before finally doing `bash run_main.sh`.    
-=======
-    The file called `causal_inference.py` handles this type of ATE calculation. You need to specify some variables in the file: the baseline folder, where to save the predicted estimates, etc. Then tweak `run.sh` to run the required python file before finally doing `bash run.sh`.
-    > Update: based on our new ideas here, we have created the `causal_inference_main.py` file to handle just calculating and saving the ATE, as well as the new saving format.
->>>>>>> e19eb1406d75958a43ac4ebb2ef30e733c1f349e
 
     **👋🏽Special-case ATE**: Instead of looping through all the combinations, we focus on a few interesting treatment-effect cases and only calculate ATE for such variables. Further explanation can be found [here](https://www.notion.so/chrisemezue/Timeline-and-Experiments-to-run-7c02b1fe955749bfaaeccaa27423de3b?pvs=4#13bbfe1c482d40c2b60a968318e0a0b9).
 
