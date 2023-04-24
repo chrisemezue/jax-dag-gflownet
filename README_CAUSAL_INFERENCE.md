@@ -22,6 +22,8 @@ Some important variables here are
 5. **Running for dag-gfn**: The bash file called [`job.sh`](https://github.com/chrisemezue/gflownet_sl/blob/chris/ci/job.sh) handles it. Under the hood, it uses the `main.py` python file and stores all required files on [WANDB](https://wandb.ai/tristandeleu_mila_01/gflownet-bayesian-structure-learning/table?workspace=user-chrisemezue). Running `job.sh` already enables parallelization by running the different seeds on separate cluster nodes.
 
     For WANDB, I use this tag structure `tags=[f'causal_inference_{args.num_samples}'] to distinguish the different run results I am running for the causal inference. Another thing I did was to configure the name of the wandb instance to be the seed number. All these were done to enable easy downloading of the required files for causal inference in phase 2️⃣.
+    
+    You run this experiment by doing `sbatch job.sh NUM_SAMPLES`.
 
 
 ### 2️⃣ Causal Inference pipeline
