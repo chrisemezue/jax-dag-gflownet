@@ -14,7 +14,7 @@ Some important variables here are
 
 1. Need to cd into `/home/mila/c/chris.emezue/gflownet_sl`. This is the codebase for all causal discovery.
 2. The python file `eval_baselines_lingauss.py` handles causal discovery for `gadget`, `mc3`, `dibs`, and `bcdnets`.
-3. Therefore to do causal discovery for the above baselines, simply run: `bash run_baselines_lingauss20.sh`.
+3. Therefore to do causal discovery for the above baselines, simply run: `bash run.sh`. It has the `run_baselines_lingauss20.sh` which handles the CD part.
 
     Inside `run_baselines_lingauss20.sh` you specify the number of variables, edges as well as  the `folder` -- this is an important parameter because it is where the experimental graph and data as well as the learned posterior will be stored. You will need this for phase 2️⃣.
 
