@@ -1,11 +1,27 @@
 import os
 import sys
+import numpy as np
 import causaldag as cd
 import networkx as nx
 import pickle as pl
 from tqdm import tqdm
 
 # The plan is to get the Markov equivalence class of all ground-truth DAGs (graphs).
+
+
+# Source: https://github.com/ServiceNow/typed-dag/blob/e951e7323f15b7b16499d5690e7105bd4d3956f0/typed_pc/tmec.py#L18
+def is_acyclic(adjacency: np.ndarray) -> bool:
+    """
+    Check if adjacency matrix is acyclic
+    :param adjacency: adjacency matrix
+    :returns: True if acyclic
+    """
+    prod = np.eye(adjacency.shape[0])
+    for _ in range(1, adjacency.shape[0] + 1):
+        prod = np.matmul(adjacency, prod)
+        if np.trace(prod) != 0:
+            return False
+    return True
 
 if __name__=="__main__":
     BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20'
@@ -29,12 +45,15 @@ if __name__=="__main__":
             
                 with open(os.path.join(BASE_PATH,'true_cpdag.pkl'),'rb') as f:
                     cpdag = pl.load(f)
+                
+                MEC_DAGS=[]
                 # Now get all possible orientations
-                breakpoint()
-                cpd_graph = nx.Graph(cpdag)
-                cd_cpdag = cd.PDAG().from_nx(cpd_graph)
-                me_class_dags = cd_cpdag.all_dags()
-                breakpoint()
+                for d in cd.PDAG.from_amat(cpdag).all_dags():
+                    adj_d = cd.DAG(nodes=np.arange(cpdag.shape[0]), arcs=d).to_amat()
+                    if is_acyclic(adj_d):
+                        MEC_DAGS.append(adj_d)
+                with open(os.path.join(BASE_PATH,'true_mec_dags.pkl'),'rb') as f:
+                    pl.dump(MEC_DAGS,f)
                 pbar.update(1)
 
     print('ALL DONE')
