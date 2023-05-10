@@ -67,7 +67,7 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
     **👋🏽 B: ATE for true graphs in MEC**: For a more qualitative evaluation, we are not comparing against one true DAG but all the DAGs in its MEC. More details can be found [here](https://www.notion.so/chrisemezue/Evaluation-Details-7807d7cbf104474c95ca8e36cb3c507f).
 
-    This calculation is very similar to **A** above. We have the file `causal_inference_true.py` which handles this. Like above, we need to specify some variables, specifically the baseline folder (`BASELINE_FOLDER`). The program savces the ATE csvs in a `variable_ates` folder within the `BASELINE_FOLDER` folder. To kick off this operation, run `sbatch job_true_main.sh`
+    This calculation is very similar to **A** above. We have the file `causal_inference_true.py` which handles this. Like above, we need to specify some variables, specifically the baseline folder (`BASELINE_FOLDER`). The program saves the ATE csvs in a `variable_ates` folder within the `BASELINE_FOLDER` folder. To kick off this operation, run `sbatch job_true_main.sh`
 
 
 
