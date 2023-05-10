@@ -53,6 +53,8 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
 
     We currently have two approaches to this, distinguished by how we choose `T` and `E`:
 
+
+
     **👌🏽A: Total ATE**: Here we loop through all the possible treatment and effect variable combinations in our setting. Here we have 20 variables, so that makes it 400. This is obviously very computationally expensive, and we take some steps to improve on it. 
 
     > OLD: The file called `causal_inference.py` handles this type of ATE calculation. You need to specify some variables in the file: the baseline folder, where to save the predicted estimates, etc. Then tweak `run.sh` to run the required python file before finally doing `bash run.sh`.
@@ -61,12 +63,13 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
     
     **UPDATE:** `job_main.sh` handles the job file for the parallelization of this. So run `sbatch job_main.sh` to initiate the whole process.    
 
-    ---
+
 
     **👋🏽 B: ATE for true graphs in MEC**: For a more qualitative evaluation, we are not comparing against one true DAG but all the DAGs in its MEC. More details can be found [here](https://www.notion.so/chrisemezue/Evaluation-Details-7807d7cbf104474c95ca8e36cb3c507f).
 
     This calculation is very similar to **A** above. We have the file `causal_inference_true.py` which handles this. Like above, we need to specify some variables, specifically the baseline folder (`BASELINE_FOLDER`). The program savces the ATE csvs in a `variable_ates` folder within the `BASELINE_FOLDER` folder. To kick off this operation, run `sbatch job_true_main.sh`
-    ---
+
+
 
     **👋🏽 C: Special-case ATE**: Instead of looping through all the combinations, we focus on a few interesting treatment-effect cases and only calculate ATE for such variables. Further explanation can be found [here](https://www.notion.so/chrisemezue/Timeline-and-Experiments-to-run-7c02b1fe955749bfaaeccaa27423de3b?pvs=4#13bbfe1c482d40c2b60a968318e0a0b9).
 
