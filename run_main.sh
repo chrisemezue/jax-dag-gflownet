@@ -8,8 +8,8 @@ do
 
     do
 
-        for baseline in "bcdnets" "bootstrap_ges" "bootstrap_pc" "dag_gflownet" "dibs" "gadget" "mc3" "dag-gfn"
-        #for baseline in "dag-gfn"
+        #for baseline in "bcdnets" "bootstrap_ges" "bootstrap_pc" "dag_gflownet" "dibs" "gadget" "mc3" "dag-gfn"
+        for baseline in "bootstrap_ges"
         #for baseline in "bcdnets" "bootstrap_ges" "bootstrap_pc" "dibs" "gadget" "mc3"
 
         do    

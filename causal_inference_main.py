@@ -93,7 +93,11 @@ def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = N
 # Loop through all combinations of target and effect variable
 
 if __name__=="__main__":
-    baseline_to_use = sys.argv[1]
+    #print(f"sys argv: {sys.argv}")
+    sys_args = sys.argv[1].split(' ')
+    #print(f"sys_args: {sys_args}")
+
+    baseline_to_use = sys_args[0]
     SEED_TO_USE = []
     baselines_ = []
     ates_ = []
@@ -103,15 +107,15 @@ if __name__=="__main__":
     true_graph_paths = []
     true_estimates = []
 
-    treatment = str(sys.argv[3])
-    outcome = str(sys.argv[4])
+    treatment = str(sys_args[2])
+    outcome = str(sys_args[3])
 
     #SAVE_ATE_ESTIMATES_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main'
     ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20' 
     #os.makedirs(SAVE_ATE_ESTIMATES_FOLDER,exist_ok=True)
     os.makedirs(ATE_DATAFRAME_FOLDER,exist_ok=True)
 
-    seed_number = int(sys.argv[2])
+    seed_number = int(sys_args[1])
     if seed_number != 0:
         SEED_TO_USE = [i for i in range(seed_number-5,seed_number)]
 

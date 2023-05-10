@@ -119,6 +119,6 @@ if __name__=="__main__":
     with open('/home/mila/c/chris.emezue/jax-dag-gflownet/undone_ate_experiments.txt','w+') as f:
         for nf in not_found:
             f.write(nf+'\n')
-    print(f'Found {len(not_found)} not found files.')
+    print(f'Found {len(not_found)} undone files.')
 
     # Tip: save the path to the true graph instead.    
