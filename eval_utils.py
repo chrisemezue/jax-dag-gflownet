@@ -38,7 +38,7 @@ if __name__ == '__main__':
     #x = np.random.normal(0, 0.1, 1000)[:, np.newaxis]
     kde = get_kde(X,kernel='gaussian')
     log_dens = get_kde_log_likelihood(kde,X_plot)
-    breakpoint()
+    #breakpoint()
     fig, ax = plot_kde(kde,X_plot,log_dens)
     fig.savefig(f'/home/mila/c/chris.emezue/jax-dag-gflownet/kde_sample_{kde.kernel}.png')
 
@@ -46,11 +46,14 @@ if __name__ == '__main__':
 
 
     # give a baseline. given two variables. 
-    # the truth graph shouuld be the same across all seeds.
+    # the truth graph shouuld be the same across all seeds. WRONG!
         #  get the list of ATE for those variables across all seeds -> A
         #  get_kde for A -> K.
         #  get list of ATE for truth graph DAGs across all seeds for that baseline => U
         #  get kde_ll (U) given K. Save this as pickle. also save the min, max and mean in a dict. We also want to save
-        # Things to save
+    
+    
+    
+    # Things to save
             # K
             # kde_ll(U)

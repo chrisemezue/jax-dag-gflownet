@@ -12,8 +12,6 @@ from cdt.metrics import get_CPDAG
 if __name__=="__main__":
     BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20'
 
-
-
     baseline_to_use = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3']
     #baseline_to_use = ['dag-gfn']
 

@@ -26,6 +26,8 @@ index_to_node = {v:k for k,v in node_to_index.items()}
 
 #BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
 BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/'
+ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20' 
+
 
 
 @wrap_non_picklable_objects
@@ -47,7 +49,7 @@ def get_estimate_from_posterior(each_posterior,index_to_node,BASE_PATH,treatment
     df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
 
     graph_sample = nx.from_numpy_array(each_posterior,create_using=nx.DiGraph)
-    if nx.is_directed_acyclic_graph(graph_sample): # Check it is acyclic DAG
+    if nx.is_directed_acyclic_graph(graph_sample): # Check if it is an acyclic DAG
         graph_sample_relabeled = nx.relabel_nodes(graph_sample, index_to_node)
         estimate = get_causal_estimate(graph_sample_relabeled,df,treatment,outcome)
         return estimate
@@ -111,7 +113,6 @@ if __name__=="__main__":
     outcome = str(sys_args[3])
 
     #SAVE_ATE_ESTIMATES_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main'
-    ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20' 
     #os.makedirs(SAVE_ATE_ESTIMATES_FOLDER,exist_ok=True)
     os.makedirs(ATE_DATAFRAME_FOLDER,exist_ok=True)
 
@@ -154,15 +155,6 @@ if __name__=="__main__":
                 #breakpoint()
                 df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
                 true_estimate = get_causal_estimate(graph,df,treatment,outcome)
-
-                # Save predicted causal estimates
-                #with open(os.path.join(SAVE_ATE_ESTIMATES_FOLDER,f'{baseline_to_use}_{seed}_ate_estimates.npy'), 'wb') as fl:
-                #    np.save(fl,causal_estimates)
-                
-                # Save true causal estimates
-                #true_causal_estimates = np.full(causal_estimates.shape, fill_value=true_estimate)
-                #with open(os.path.join(SAVE_ATE_ESTIMATES_FOLDER,f'true_{baseline_to_use}_{seed}_ate_estimates.npy'), 'wb') as fl:
-                #    np.save(fl,true_causal_estimates)
                 
                 ates_.extend(causal_estimates_list)
                 baselines_.extend([baseline for i in range(length_causal_estimates)])
