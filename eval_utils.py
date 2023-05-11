@@ -3,20 +3,34 @@ from sklearn.neighbors import KernelDensity
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+def transform_to_required_1D(samples):
+    # Transform the shape of the samples to the form [-1,1]
+    if type(samples) == list:
+        samples = np.asarray(samples)
+    if len(samples.shape)==1:
+        samples = samples[:, np.newaxis]
+    return samples
+    
+
+
 # https://scikit-learn.org/stable/modules/density.html#kernel-density
 def get_kde(samples,kernel='gaussian',bandwidth=0.5):
+    samples = transform_to_required_1D(samples)
     kde = KernelDensity(kernel=kernel, bandwidth=bandwidth).fit(samples)
     #log_density = kde.score_samples(X[:3])
     return kde
     
 def get_kde_log_likelihood(kde,X_samples):
+    X_samples = transform_to_required_1D(X_samples)
     log_dens = kde.score_samples(X_samples)
     return log_dens
 
 
 def plot_kde(kde,X_samples,log_dens):
-    fig, ax = plt.subplots(sharex=True, sharey=True)
-    fig.subplots_adjust(hspace=0.05, wspace=0.05)
+    X_samples = transform_to_required_1D(X_samples)
+    fig, ax = plt.subplots()
+    #fig.subplots_adjust(hspace=0.05, wspace=0.05)
     # plot KDE
     ax.fill(X_samples[:, 0], np.exp(log_dens))
     ax.set_title(f"ATE KDE (kernel: {kde.kernel} | bandwidth: {kde.bandwidth} )")
