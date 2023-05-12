@@ -45,6 +45,7 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
     For dag-gfn, since the files are stored on WANDB, we need to retrieve them. That is what the file `download_files_wandb.py` does. You should set the `ROOT_FOLDER_DAG_GFN` to the chosen `BASELINE_FOLDER` so it is also saved there. 
 
 4. **Getting the true graph weights**: Now that we have all the necessary files extracted and organized, we can move on to the next phase, which involves calculating the true graph weights. We are doing this because we are using an approach inspired by [this paper](https://ftp.cs.ucla.edu/pub/stat_ser/r432.pdf). The `get_graph_weights.py` file handles this. Inside the file you need to specify the `BASELINE_FOLDER`. The true ATE details will be saved in a `true_edge_weights.json` file inside the `BASELINE_FOLDER` folder.
+> Note: we do not need to do 4 anymore.
 
 
 5. **Calculating ATE**: This is where the RMSE of true ATE and predicted ATE from the posterior samples are calculated. Given a baseline model and its set of posterior samples, let me walk you through the ATE calculation using one posterior sample -- which is essentially one predicted causal graph. Given a treatment and effect variables - `T` and `E` respectively -- we are interested in `ATE(T,E)`. I explain it in some detail [here](https://www.notion.so/chrisemezue/My-Mila-Project-29df7ef1d7954505abae8ab5361b2410?pvs=4#4e2ca9d22807470c80679d726652a679).
@@ -68,6 +69,8 @@ Our codebase for this can be found [here on Github](https://github.com/chrisemez
     **👋🏽 B: ATE for true graphs in MEC**: For a more qualitative evaluation, we are not comparing against one true DAG but all the DAGs in its MEC. More details can be found [here](https://www.notion.so/chrisemezue/Evaluation-Details-7807d7cbf104474c95ca8e36cb3c507f).
 
     This calculation is very similar to **A** above. We have the file `causal_inference_true.py` which handles this. Like above, we need to specify some variables, specifically the baseline folder (`BASELINE_FOLDER`). The program saves the ATE csvs in a `variable_ates` folder within the `BASELINE_FOLDER` folder. To kick off this operation, run `sbatch job_true_main.sh`
+
+    > Note: Before calculating the ATE for the true graphs, we need to get their CPDAG and then get their DAG samples from MEC. Therefore we need to run `get_cpdag.sh` and then `get_all_orientations_dag.sh` for the particular baseline of interest.
 
 
 
