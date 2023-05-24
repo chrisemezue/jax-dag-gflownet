@@ -28,8 +28,8 @@ if __name__=="__main__":
 
 
 
-    baseline_to_use = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3']
-    #baseline_to_use = ['bcdnets']
+    #baseline_to_use = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag-gfn']
+    baseline_to_use = ['dag-gfn']
 
     SEED_TO_USE = [i for i in range(26)]
     variance=[]
@@ -50,17 +50,19 @@ if __name__=="__main__":
                         print(f"could not find cpdag filepath: {cpdag_filepath}")
                         continue        
                     
-                    with open(cpdag_filepath,'rb') as f:
-                        cpdag = pl.load(f)
-                    
-                    MEC_DAGS=[]
-                    # Now get all possible orientations
-                    for d in cd.PDAG.from_amat(cpdag).all_dags():
-                        adj_d = cd.DAG(nodes=np.arange(cpdag.shape[0]), arcs=d).to_amat()[0]
-                        if is_acyclic(adj_d):
-                            MEC_DAGS.append(adj_d)
-                    with open(os.path.join(BASE_PATH,'true_mec_dags.pkl'),'wb+') as f:
-                        pl.dump(MEC_DAGS,f)
+                    true_mec_dags_filename = os.path.join(BASE_PATH,'true_mec_dags.pkl')
+                    if not os.path.exists(true_mec_dags_filename):
+                        with open(cpdag_filepath,'rb') as f:
+                            cpdag = pl.load(f)
+                        
+                        MEC_DAGS=[]
+                        # Now get all possible orientations
+                        for d in cd.PDAG.from_amat(cpdag).all_dags():
+                            adj_d = cd.DAG(nodes=np.arange(cpdag.shape[0]), arcs=d).to_amat()[0]
+                            if is_acyclic(adj_d):
+                                MEC_DAGS.append(adj_d)
+                        with open(true_mec_dags_filename,'wb+') as f:
+                            pl.dump(MEC_DAGS,f)
                 pbar.update(1)
 
     print('ALL DONE')

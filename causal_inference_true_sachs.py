@@ -15,15 +15,14 @@ from typing import Optional
 set_loky_pickler('pickle5') #https://joblib.readthedocs.io/en/latest/auto_examples/serialization_and_wrappers.html
 
 node_to_index = {
-    'A':0,
-    'B':1,
-    'C':2,'D':3,'E':4,'F':5,'G':6,'H':7,'I':8,'J':9,'K':10,'L':11,'M':12,'N':13,'O':14,'P':15,'Q':16,'R':17,'S':18,'T':19
+    'Akt':0,
+    'Erk':1,
+    'Jnk':2,
+    'Mek':3,'P38':4,'PIP2':5,'PIP3':6,'PKA':7,'PKC':8,'Plcg':9,'Raf':10
 }
-
 index_to_node = {v:k for k,v in node_to_index.items()} 
 
 
-BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/'
 
 
 @wrap_non_picklable_objects
@@ -42,7 +41,12 @@ def get_causal_estimate(graph,df,treatment,outcome):
 
 @wrap_non_picklable_objects
 def get_estimate_from_posterior(each_posterior,index_to_node,BASE_PATH,treatment,outcome):
-    df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
+    try:
+        df = pd.read_csv(os.path.join(BASE_PATH,'data.csv'))
+    except  FileNotFoundError:
+        # Let's try `data.pkl`
+        with open(os.path.join(BASE_PATH,'data.pkl'),'rb') as f:
+            df = pl.load(f)
 
     graph_sample = nx.from_numpy_array(each_posterior,create_using=nx.DiGraph)
     if nx.is_directed_acyclic_graph(graph_sample): # Check if it is an acyclic DAG
@@ -54,6 +58,8 @@ def get_estimate_from_posterior(each_posterior,index_to_node,BASE_PATH,treatment
 
 
 if __name__=="__main__":
+    BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs/'
+
     #print(f"sys argv: {sys.argv}")
     sys_args = sys.argv[1].split(' ')
     #sys_args = sys.argv[1:]
@@ -62,12 +68,10 @@ if __name__=="__main__":
     baseline_to_use = sys_args[0]
     SEED_TO_USE = []
 
-    treatment = str(sys_args[2])
-    outcome = str(sys_args[3])
+    treatment = str(sys_args[1])
+    outcome = str(sys_args[2])
 
-    seed_number = int(sys_args[1])
-    if seed_number != 0:
-        SEED_TO_USE = [i for i in range(seed_number-5,seed_number)]
+    SEED_TO_USE = [0]
 
     if treatment!=outcome:
         for baseline in [baseline_to_use]:
@@ -96,8 +100,6 @@ if __name__=="__main__":
                     with open(posterior_file_path,'rb') as f:
                         true_posterior = pickle.load(f)
 
-                    #breakpoint()
-                    #posterior = np.load(posterior_file_path)[:10,:,:] # for debugging
                     
                     PATH_TO_SAVE_TRUE_ATE_ESTIMATES = os.path.join(BASE_PATH,'variable_ates')
                     os.makedirs(PATH_TO_SAVE_TRUE_ATE_ESTIMATES,exist_ok=True)

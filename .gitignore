@@ -138,3 +138,4 @@ dmypy.json
 slurm2/*
 slurm/*
 slurm_sc/*
+slurm*/*

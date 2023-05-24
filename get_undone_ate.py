@@ -10,7 +10,7 @@ node_to_index = {
 index_to_node = {v:k for k,v in node_to_index.items()} 
 
 #BASELINE_FOLDER = '/home/mila/c/chris.emezue/scratch/baselines/'
-BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/'
+BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss100/'
 
 
 VARIABLES = list(node_to_index.keys())
@@ -41,7 +41,7 @@ if __name__=="__main__":
                     #outcome = str(sys_args[3])
 
                     #SAVE_ATE_ESTIMATES_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main'
-                    ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20' 
+                    ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_100' 
                     #os.makedirs(SAVE_ATE_ESTIMATES_FOLDER,exist_ok=True)
                     #os.makedirs(ATE_DATAFRAME_FOLDER,exist_ok=True)
 

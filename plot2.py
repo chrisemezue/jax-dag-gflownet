@@ -11,20 +11,20 @@ BASELINES = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag
 SEEDS = [0]
 
 
-dfs_list = []
+# dfs_list = []
 
-for baseline in BASELINES:
-    for seed in SEEDS:
+# for baseline in BASELINES:
+#     for seed in SEEDS:
         
-        baseline_seed_folder = os.path.join(os.path.join(FOLDER,baseline),str(seed))
-        kde_folder = os.path.join(baseline_seed_folder,'kde')
-        pds_paths = [os.path.join(kde_folder,f.name) for f in os.scandir(kde_folder) if f.name.endswith('.csv')]
-        pds = [pd.read_csv(f) for f in pds_paths]
-        dfs_list.extend(pds)
+#         baseline_seed_folder = os.path.join(os.path.join(FOLDER,baseline),str(seed))
+#         kde_folder = os.path.join(baseline_seed_folder,'kde')
+#         pds_paths = [os.path.join(kde_folder,f.name) for f in os.scandir(kde_folder) if f.name.endswith('.csv')]
+#         pds = [pd.read_csv(f) for f in pds_paths]
+#         dfs_list.extend(pds)
 
-df = pd.concat(dfs_list)
+# df = pd.concat(dfs_list)
 
-breakpoint()
+# breakpoint()
 
 def check_if_true_graph_multimodal(list_):
     # check the len of its set.
@@ -35,20 +35,21 @@ def check_if_true_graph_multimodal(list_):
     else:
         return False
 def get_plot_multimodal():
+    IGNORE = True
     KDE_FOLDER = '/home/mila/c/chris.emezue/scratch/causal_inference/kde_sachs'
-    BASEFOLDER  = '/home/mila/c/chris.emezue/jax-dag-gflownet/plots'
+    BASEFOLDER  = '/home/mila/c/chris.emezue/jax-dag-gflownet/plots_others'
     SACHS_VARIABLES_LIST = ['Akt' ,'Erk' ,'Jnk' ,'Mek', 'P38' ,'PIP2' ,'PIP3' ,'PKA' ,'PKC', 'Plcg' ,'Raf']
     TEMPLATE = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs/dag-gfn/0/variable_ates/true_ate_estimates_{}_{}.csv'
     with tqdm((len(SACHS_VARIABLES_LIST)**2) * len(BASELINES),desc = 'Interesting variables...') as pbar:
         for treatment in SACHS_VARIABLES_LIST:
             for outcome in SACHS_VARIABLES_LIST:
-                if treatment=='Akt' and outcome=='Jnk':
+                if treatment=='PKA' and outcome=='PIP3':
                     # Get true ATE of it.
                     true_ate_filename = TEMPLATE.format(treatment,outcome)
                     if os.path.exists(true_ate_filename):
                         true_df = pd.read_csv(true_ate_filename)
                         true_ates = true_df['true_ates'].values.tolist()
-                        if check_if_true_graph_multimodal(true_ates):
+                        if check_if_true_graph_multimodal(true_ates) or IGNORE:
                             FIG_FOLDER = os.path.join(BASEFOLDER,f'{treatment}-{outcome}')
                             os.makedirs(FIG_FOLDER,exist_ok = True)
                             fig,ax = plt.subplots(3,3,sharex=False,sharey=True)
@@ -70,7 +71,7 @@ def get_plot_multimodal():
                 pbar.update(1)
 
 
-
+get_plot_multimodal()
 breakpoint()
 files = [os.path.join(FOLDER,f.name) for f in os.scandir(FOLDER)]
 

@@ -88,8 +88,8 @@ def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = N
 # Loop through all combinations of target and effect variable
 
 if __name__=="__main__":
-    BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/'
-    ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20' 
+    BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss100/'
+    ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_100' 
 
     sys_args = sys.argv[1].split(' ') # if using SLURM
     #sys_args = sys.argv[1:] #if not using SLURM
@@ -143,6 +143,7 @@ if __name__=="__main__":
                     
                     # Without parallelization
                     #causal_estimates = np.array([get_estimate_from_posterior(posterior[i,:,:],index_to_node,BASE_PATH) for i in range(posterior.shape[0])])
+
                     results = Parallel(n_jobs=len(os.sched_getaffinity(0)))(
                             delayed(get_estimate_from_posterior)(posterior[i,:,:],index_to_node,BASE_PATH,treatment,outcome)
                             for i in range(posterior.shape[0])

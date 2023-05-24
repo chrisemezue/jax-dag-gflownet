@@ -9,3 +9,5 @@ pgmpy
 networkx
 tqdm
 scikit-learn
+KDEpy
+pickle5

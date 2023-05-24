@@ -15,7 +15,7 @@ export CUDA_VISIBLE_DEVICES=0
 export SLURM_TMPDIR=/home/mila/c/chris.emezue/scratch/SINGULARITY_CDT_TMP_DIR
 #echo $SLURM_TMPDIR
 
-cp /network/scratch/m/mansi.rankawat/gflownet_correct3.simg $SLURM_TMPDIR
+#cp /network/scratch/m/mansi.rankawat/gflownet_correct3.simg $SLURM_TMPDIR
 
 singularity exec --nv -B $SLURM_TMPDIR:/tmp $SLURM_TMPDIR/gflownet_correct3.simg python3 get_cpdag.py
 

@@ -33,9 +33,7 @@ def transform_to_required_1D(samples):
 def get_best_kde_params_grid_search(x):
     x = transform_to_required_1D(x)
     param_grid = {
-    'bandwidth': [i for i in np.linspace(1e-3, 1, 10)], #+ ['scott','silverman'],
-    'kernel': ['gaussian', 'tophat', 'exponential','epanechnikov']
-    }
+    'bandwidth': [i for i in np.linspace(1e-3, 1, 10)]    }
     # scorer = _make_scorer(kde_evaluate_function,greater_is_better = False)
     grid = GridSearchCV(KernelDensity(),
                     param_grid,
@@ -44,13 +42,17 @@ def get_best_kde_params_grid_search(x):
 
     return grid.best_params_
 
-
+# https://www.statsmodels.org/stable/_modules/statsmodels/nonparametric/kernel_density.html#KDEMultivariate.loo_likelihood
 # https://scikit-learn.org/stable/modules/density.html#kernel-density
-def get_kde(samples,kernel='gaussian',bandwidth=0.5):
+def get_kde(samples,kernel='gaussian',bandwidth=None):
     samples = transform_to_required_1D(samples)
     settings = sm.nonparametric.EstimatorSettings(efficient=True,randomize=True,n_sub=100)    
     kde_sm = sm.nonparametric.KDEMultivariate(data=samples,var_type='c', bw='cv_ml',defaults = settings)
-    bandwidth = kde_sm.bw[0]
+    if np.isnan(kde_sm.bw[0]) or kde_sm.bw[0]==0.0:
+        bandwidth=0.001
+    else:
+        bandwidth = kde_sm.bw[0]
+
     kde = KernelDensity(kernel=kernel, bandwidth=bandwidth).fit(samples) # using scikit-learn
     return kde
     
@@ -67,7 +69,7 @@ def plot_kde(kde,X_samples,log_dens):
     #fig.subplots_adjust(hspace=0.05, wspace=0.05)
     # plot KDE
     ax.fill(X_samples[:, 0], np.exp(log_dens))
-    ax.set_title(f"ATE KDE (kernel: {kde.kernel} | bandwidth: {kde.bandwidth} )")
+    ax.set_title(f"ATE KDE (kernel: {kde.kernel} | bandwidth: {kde.bandwidth})")
     return fig, ax
 
 
@@ -78,14 +80,14 @@ def calculate_wasserstein_distance(true_values, pred_values):
 
 if __name__ == '__main__':
     #breakpoint()
-    N = 1000
-    X = np.concatenate(
-    (np.random.normal(0, 1, int(0.3 * N)), np.random.normal(5, 1, int(0.7 * N)))
-    )[:, np.newaxis]
+    #N = 1000
+    #X = np.concatenate(
+    #(np.random.normal(0, 1, int(0.3 * N)), np.random.normal(5, 1, int(0.7 * N)))
+    #)[:, np.newaxis]
 
-    X_plot = np.linspace(-5, 10, 1000)[:, np.newaxis]
+    #X_plot = np.linspace(-5, 10, 1000)[:, np.newaxis]
     #x = np.random.normal(0, 0.1, 1000)[:, np.newaxis]
-    kde = get_kde(X,kernel='gaussian')
+    #kde = get_kde(X,kernel='gaussian')
     # log_dens = get_kde_log_likelihood(kde,X_plot)
     # #breakpoint()
     # fig, ax = plot_kde(kde,X_plot,log_dens)
@@ -104,35 +106,29 @@ if __name__ == '__main__':
     outcome = 'M'
     seed = 0
 
-    kernels = []
-    bandwidths = []
-    with tqdm(1*20*20*26,desc='Finding best KDE params') as pbar:
-        #for baseline in ["bcdnets", "bootstrap_ges" ,"bootstrap_pc" ,"dibs", "gadget" ,"mc3" ,"dag-gfn"]:
-        for baseline in ["bcdnets"]:#, "bootstrap_ges" ,"bootstrap_pc" ,"dibs", "gadget" ,"mc3" ,"dag-gfn"]:
+    #kernels = []
+    #bandwidths = []
 
-            for treatment in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T']:
-                for outcome in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T']:
-                    if treatment!=outcome:
-                        for seed in range(26):
 
-                            ate_of_interest = ate_dataframe_concatenated.query(f'baselines=="{baseline}" & seeds=={seed} & treatments=="{treatment}" & outcomes=="{outcome}"')
+    ate_of_interest = ate_dataframe_concatenated.query(f'baselines=="{baseline}" & seeds=={seed} & treatments=="{treatment}" & outcomes=="{outcome}"')
 
-                            estimate_ate_samples = ate_of_interest['ates'].values.tolist()
-                            if estimate_ate_samples!=[]:
+    estimate_ate_samples = ate_of_interest['ates'].values.tolist()
+    X_plot = np.linspace(-5, 5, 1000)[:, np.newaxis]
+    fig, ax  = plt.subplots()
 
-                                #start_time = time.time()
-                                best_params = get_best_kde_params_grid_search(estimate_ate_samples)
-                                kernels.append(best_params['kernel'])
-                                bandwidths.append(best_params['bandwidth'])
-                                #end_time = time.time()
-                                #print(f'Time taken: {end_time - start_time}')
-                                #print(f'BEST PARAMS...')
-                                #print(best_params)
-                            pbar.update(1)
-    df_params = pd.DataFrame({'kernels':kernels,'bandwidth':bandwidths})
-    breakpoint()
-    df_params.to_csv('/home/mila/c/chris.emezue/jax-dag-gflownet/best_kde_params.csv',index=False)
+    #for bw,color in zip([10,100,1000],['blue','gray','red']):
+    for bw,color in zip([100000],['blue']):
 
+        kde = get_kde(estimate_ate_samples,kernel='gaussian',bandwidth=bw)
+        #best_params = get_best_kde_params_grid_search(estimate_ate_samples)
+        #breakpoint()
+        lls = get_kde_log_likelihood(kde,X_plot)
+        ax.plot(X_plot,np.exp(lls),'-',color=color,label=f'bw = {bw}')
+        ax.set_ylabel('log-likelihood')
+    ax.legend()
+    plt.tight_layout()
+    fig.savefig('kde_A_M_bcdnets_fixed_bw_big.png')
+    #breakpoint()
 
     # give a baseline. given two variables. 
     # the truth graph shouuld be the same across all seeds. WRONG!
