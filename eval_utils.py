@@ -10,10 +10,10 @@ import numpy as np
 from tqdm import tqdm
 from sklearn.metrics import make_scorer
 import statsmodels.api as sm
+from collections import Counter
 
 
 def kde_evaluate_function(y_true, y_pred):
-    breakpoint()
     diff = np.abs(y_true - y_pred).max()
     return np.log1p(diff)
 
@@ -44,14 +44,15 @@ def get_best_kde_params_grid_search(x):
 
 # https://www.statsmodels.org/stable/_modules/statsmodels/nonparametric/kernel_density.html#KDEMultivariate.loo_likelihood
 # https://scikit-learn.org/stable/modules/density.html#kernel-density
-def get_kde(samples,kernel='gaussian',bandwidth=None):
+def get_kde(samples,kernel='gaussian',bandwidth=0.001):
+    bandwidth=0.001
     samples = transform_to_required_1D(samples)
-    settings = sm.nonparametric.EstimatorSettings(efficient=True,randomize=True,n_sub=100)    
-    kde_sm = sm.nonparametric.KDEMultivariate(data=samples,var_type='c', bw='cv_ml',defaults = settings)
-    if np.isnan(kde_sm.bw[0]) or kde_sm.bw[0]==0.0:
-        bandwidth=0.001
-    else:
-        bandwidth = kde_sm.bw[0]
+    #settings = sm.nonparametric.EstimatorSettings(efficient=True,randomize=True,n_sub=100)    
+    #kde_sm = sm.nonparametric.KDEMultivariate(data=samples,var_type='c', bw='cv_ml',defaults = settings)
+    #if np.isnan(kde_sm.bw[0]) or kde_sm.bw[0]==0.0:
+    #    bandwidth=0.001
+    #else:
+    #    bandwidth = kde_sm.bw[0]
 
     kde = KernelDensity(kernel=kernel, bandwidth=bandwidth).fit(samples) # using scikit-learn
     return kde
@@ -61,6 +62,36 @@ def get_kde_log_likelihood(kde,X_samples):
     log_dens = kde.score_samples(X_samples)
 
     return log_dens
+
+
+# np_isclose(): https://numpy.org/doc/stable/reference/generated/numpy.isclose.html#
+def get_distribution_metrics(pred_list,true_list):
+    # Given the true list of ATEs and those from the baselines, 
+    # we want to get the proportion of modes missed and 
+    # discovered by the baselines.
+    true_modal_distrib = Counter(true_list)
+    pred_modal_distrib = Counter(pred_list)
+
+    # We say a number is a mode if it contains at least one element in the list.
+    pred = list(pred_modal_distrib.keys())
+    true = list(true_modal_distrib.keys())
+    # how many of our estimated ATE samples are equal to the ground truth ATE.
+    distribution_closeness_of_pred = [np.isclose(pred,k,atol=1e-5) for k in true]
+
+    # Check if a mode from true is captured by pred. We do this by checking
+    # if there is at least one True item in the elements of `distribution_closeness_of_pred`
+    modes_found_by_estimate = sum([np.count_nonzero(np.any(t)) for t in distribution_closeness_of_pred])
+    proportion_modes_found_by_estimate = modes_found_by_estimate / len(true_modal_distrib)
+
+
+    # Get false modes by checking each element in `distribution_closeness_of_pred` where#
+    # everything False: [False,False,...Fasle].
+    distribution_closeness_of_true = [np.isclose(true,k,atol=1e-5) for k in pred]
+
+    #breakpoint()
+    false_modes_by_estimate = sum([np.count_nonzero(np.all(t==False)) for t in distribution_closeness_of_true])
+    proportion_false_modes_found_by_estimate = false_modes_by_estimate / len(pred_modal_distrib)
+    return proportion_modes_found_by_estimate, proportion_false_modes_found_by_estimate
 
 
 def plot_kde(kde,X_samples,log_dens):
@@ -94,6 +125,22 @@ if __name__ == '__main__':
     # fig.savefig(f'/home/mila/c/chris.emezue/jax-dag-gflownet/kde_sample_{kde.kernel}.png')
 
     # Get the best params
+
+    true = [0.0 for i in range(100)] + [1.0 for i in range(100)] + [0.2 for i in range(100)]
+    #true = np.random.normal(0,0.25,300)
+    pred = [0.0 for i in range(400)] + np.random.rand(20).squeeze().tolist()
+    proportion_modes_found_by_estimate, proportion_false_modes_found_by_estimate = get_distribution_metrics(pred,true)
+    #breakpoint()
+
+    fig,ax = plt.subplots(1,2,sharex=False,sharey=False,squeeze= False)
+    ax[0,0].hist(true,bins=30,label='True ATE',color='orange')
+    ax[0,1].hist(pred,bins=30,label='Pred ATE')
+    fig.suptitle('MODES | found: {0:.2f}, missed: {1:.2f}, false: {2:.2f}'.format(proportion_modes_found_by_estimate,1 - proportion_modes_found_by_estimate,proportion_false_modes_found_by_estimate))
+    fig.tight_layout()
+    plt.legend()
+    fig.savefig('test-true-random.png')
+    breakpoint()
+
 
     ATE_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20'
 
