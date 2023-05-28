@@ -45,7 +45,7 @@ for treatment in A B C D E F G H I J K L M N O P Q R S T; do
         done
     done
 done | parallel -j$SLURM_NTASKS \
-srun --immediate --exact --ntasks=1 --nodes=1 \
+echo srun --immediate --exact --ntasks=1 --nodes=1 \
      --output=/network/scratch/c/chris.emezue/slurm_sc_100/slurmoutput_ate_%j_%s.txt \
      --error=/network/scratch/c/chris.emezue/slurm_sc_100/slurmerror_ate_%j_%s.txt \
      python causal_inference_main.py

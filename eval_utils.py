@@ -69,29 +69,57 @@ def get_distribution_metrics(pred_list,true_list):
     # Given the true list of ATEs and those from the baselines, 
     # we want to get the proportion of modes missed and 
     # discovered by the baselines.
+    # breakpoint()
+
     true_modal_distrib = Counter(true_list)
     pred_modal_distrib = Counter(pred_list)
+
+    true_modal_distrib = {k:v/len(true_list) for k,v in true_modal_distrib.items()}
+    pred_modal_distrib = {k:v/len(pred_list) for k,v in pred_modal_distrib.items()}
+
+    # Pick only those above a certain threshold as points of `mass`
+    THRESHOLD = 1e-3
+    true_modal_distrib = {k:v for k,v in true_modal_distrib.items() if v>=THRESHOLD}
+    pred_modal_distrib = {k:v for k,v in pred_modal_distrib.items() if v>=THRESHOLD}
+
+    # Reference for precision and recall
+    # https://en.wikipedia.org/wiki/Precision_and_recall
+
+    # P = # modes of true ATE distribution
+    # TP: modes from `true` that we found in `pred`
+    # FN: modes from `true` that we missed in `pred` | FN = P - TP
+    # FP: modes from `pred` that are not in `true`
+    # Precision: TP/(TP + FP)
+    # Recall: TP/(TP + FN)
+
 
     # We say a number is a mode if it contains at least one element in the list.
     pred = list(pred_modal_distrib.keys())
     true = list(true_modal_distrib.keys())
     # how many of our estimated ATE samples are equal to the ground truth ATE.
-    distribution_closeness_of_pred = [np.isclose(pred,k,atol=1e-5) for k in true]
+    distribution_closeness_of_pred = [np.isclose(pred,k,atol=1e-2) for k in true]
 
     # Check if a mode from true is captured by pred. We do this by checking
     # if there is at least one True item in the elements of `distribution_closeness_of_pred`
-    modes_found_by_estimate = sum([np.count_nonzero(np.any(t)) for t in distribution_closeness_of_pred])
-    proportion_modes_found_by_estimate = modes_found_by_estimate / len(true_modal_distrib)
+    modes_found_by_estimate = sum([np.count_nonzero(np.any(t)) for t in distribution_closeness_of_pred]) # TP
+
+    false_negative = len(true)  - modes_found_by_estimate # FN
 
 
-    # Get false modes by checking each element in `distribution_closeness_of_pred` where#
+    # Get false positive modes by checking each element in `distribution_closeness_of_pred` where#
     # everything False: [False,False,...Fasle].
     distribution_closeness_of_true = [np.isclose(true,k,atol=1e-5) for k in pred]
 
     #breakpoint()
-    false_modes_by_estimate = sum([np.count_nonzero(np.all(t==False)) for t in distribution_closeness_of_true])
-    proportion_false_modes_found_by_estimate = false_modes_by_estimate / len(pred_modal_distrib)
-    return proportion_modes_found_by_estimate, proportion_false_modes_found_by_estimate
+    false_modes_by_estimate = sum([np.count_nonzero(np.all(t==False)) for t in distribution_closeness_of_true]) # FP
+
+    precision = modes_found_by_estimate/(modes_found_by_estimate+false_modes_by_estimate)
+    recall = modes_found_by_estimate/len(true)
+
+    details = {'TP':modes_found_by_estimate,'FP':false_modes_by_estimate,'FN':false_negative,'P': len(true)}
+
+    return precision,recall,details
+
 
 
 def plot_kde(kde,X_samples,log_dens):
@@ -126,16 +154,18 @@ if __name__ == '__main__':
 
     # Get the best params
 
-    true = [0.0 for i in range(100)] + [1.0 for i in range(100)] + [0.2 for i in range(100)]
+    true = [0.0 for i in range(100)] + [1.0 for i in range(100)]
     #true = np.random.normal(0,0.25,300)
-    pred = [0.0 for i in range(400)] + np.random.rand(20).squeeze().tolist()
-    proportion_modes_found_by_estimate, proportion_false_modes_found_by_estimate = get_distribution_metrics(pred,true)
+    pred = [0.0 for i in range(400)] 
+    precision, recall, metrics = get_distribution_metrics(pred,true)
     #breakpoint()
 
     fig,ax = plt.subplots(1,2,sharex=False,sharey=False,squeeze= False)
     ax[0,0].hist(true,bins=30,label='True ATE',color='orange')
+    ax[0,0].legend()
+    #breakpoint()
     ax[0,1].hist(pred,bins=30,label='Pred ATE')
-    fig.suptitle('MODES | found: {0:.2f}, missed: {1:.2f}, false: {2:.2f}'.format(proportion_modes_found_by_estimate,1 - proportion_modes_found_by_estimate,proportion_false_modes_found_by_estimate))
+    fig.suptitle('MODES | precision: {0:.2f}, recall: {1:.2f}'.format(precision,recall))
     fig.tight_layout()
     plt.legend()
     fig.savefig('test-true-random.png')

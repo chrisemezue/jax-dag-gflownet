@@ -6,5 +6,7 @@ do
     #sbatch evaluate_kde.sh $baseline
     #echo $baseline
     sbatch evaluate_kde.sh $baseline
+    sbatch evaluate_kde_100.sh $baseline
+    sbatch evaluate_kde_sachs.sh $baseline
 
 done    

@@ -5,8 +5,8 @@
 #SBATCH --mem-per-cpu=8G
 #SBATCH --time=7-00:00:00
 #SBATCH --partition=long
-#SBATCH --output=/network/scratch/c/chris.emezue/slurm_kde_20_20/main_slurmoutput_ate-%j.txt
-#SBATCH --error=/network/scratch/c/chris.emezue/slurm_kde_20_20/main_slurmerror_ate-%j.txt
+#SBATCH --output=/network/scratch/c/chris.emezue/slurm_kde_20_100/main_slurmoutput_ate-%j.txt
+#SBATCH --error=/network/scratch/c/chris.emezue/slurm_kde_20_100/main_slurmerror_ate-%j.txt
 
 # Env activate
 source /home/mila/c/chris.emezue/scratch/py38env/bin/activate
@@ -19,11 +19,11 @@ unset  SLURM_MEM_PER_NODE   # Clear out the effects of --mem=
 
 
 # for 20
-export BASELINE_FOLDER=/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20
-export ATE_FOLDER=/home/mila/c/chris.emezue/scratch/ate_estimates_main_20
-export SCRATCH_FOLDER=/home/mila/c/chris.emezue/scratch/causal_inference/kde_lingauss20
+export BASELINE_FOLDER=/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss100
+export ATE_FOLDER=/home/mila/c/chris.emezue/scratch/ate_estimates_main_100
+export SCRATCH_FOLDER=/home/mila/c/chris.emezue/scratch/causal_inference/kde_lingauss100
 export NUMBER_OF_NODES=20
-export NUMBER_OF_SAMPLES=20
+export NUMBER_OF_SAMPLES=100
 
 # for sachs
 #export BASELINE_FOLDER=/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs
@@ -45,6 +45,7 @@ for treatment in A B C D E F G H I J K L M N O P Q R S T; do
     #for outcome in 'Erk'; do
         for baseline in $1; do
         #for baseline in "dag-gfn"; do
+            #for i in 5 10 15 20 25 30; do
             for i in 5; do
             # We are not using `i` here
                 echo $baseline $i $treatment $outcome $BASELINE_FOLDER $ATE_FOLDER $SCRATCH_FOLDER $NUMBER_OF_NODES $NUMBER_OF_SAMPLES
@@ -53,8 +54,8 @@ for treatment in A B C D E F G H I J K L M N O P Q R S T; do
     done
 done | parallel -j$SLURM_NTASKS \
 srun --immediate --exact --ntasks=1 --nodes=1 \
-     --output=/network/scratch/c/chris.emezue/slurm_kde_20_20/slurmoutput_ate_%j_%s.txt \
-     --error=/network/scratch/c/chris.emezue/slurm_kde_20_20/slurmerror_ate_%j_%s.txt \
+     --output=/network/scratch/c/chris.emezue/slurm_kde_20_100/slurmoutput_ate_%j_%s.txt \
+     --error=/network/scratch/c/chris.emezue/slurm_kde_20_100/slurmerror_ate_%j_%s.txt \
      python evaluate_ate.py
 
 

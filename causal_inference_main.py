@@ -88,10 +88,10 @@ def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = N
 # Loop through all combinations of target and effect variable
 
 if __name__=="__main__":
-    BASELINE_FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20/'
-    ATE_DATAFRAME_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20' 
-
     sys_args = sys.argv[1].split(' ') # if using SLURM
+    if len(sys_args)==1:
+        sys_args = sys.argv[1:] # if using bash
+
     #sys_args = sys.argv[1:] #if not using SLURM
     print(sys_args)
     baseline_to_use = sys_args[0]
@@ -107,12 +107,16 @@ if __name__=="__main__":
     treatment = str(sys_args[2])
     outcome = str(sys_args[3])
 
+    BASELINE_FOLDER = str(sys_args[4])
+    ATE_DATAFRAME_FOLDER = str(sys_args[5]) 
+
+
     os.makedirs(ATE_DATAFRAME_FOLDER,exist_ok=True)
 
 
     seed_number = int(sys_args[1])
-    if seed_number != 0:
-        SEED_TO_USE = [i for i in range(seed_number-5,seed_number)]
+    SEED_TO_USE = [seed_number]
+
 
     ate_estimate_csv_filename = os.path.join(ATE_DATAFRAME_FOLDER,f'{baseline_to_use}_{SEED_TO_USE}_{treatment}_{outcome}_ate_estimates.csv')
     
