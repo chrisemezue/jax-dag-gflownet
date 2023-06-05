@@ -50,39 +50,6 @@ def get_estimate_from_posterior(each_posterior,index_to_node,BASE_PATH,treatment
         return None    
 
 
-def calculate_rmse(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> np.ndarray:
-    """
-    Calculates the root mean squared error (RMSE) between arrays `a` and `b`.
-
-    Args:
-        a (ndarray): Array used for error calculation
-        b (ndarray): Array used for error calculation
-        axis (int): Axis upon which to calculate mean
-
-    Returns: (ndarray) RMSE value taken along axis `axis`.
-    """
-    # Remove `None` values from the RMSE calculation: encountered it in `dibs`
-    mask = a!=None
-    a_ = a[mask]
-    b_ = b[mask]
-    ####################
-    return np.sqrt(np.mean(np.square(np.subtract(a_, b_)), axis=axis))
-
-
-def calculate_squared_diff(a: np.ndarray, b: np.ndarray, axis: Optional[int] = None) -> np.ndarray:
-    """
-    Calculates the squared difference between arrays `a` and `b`.
-
-    Args:
-        a (ndarray): Array used for error calculation
-        b (ndarray): Array used for error calculation
-        axis (int): Axis upon which to calculate mean
-
-    Returns: (ndarray) RMSE value taken along axis `axis`.
-    """
-    return np.square(np.subtract(a, b))
-
-
 # Calculate only the ATE (no need for RMSE) and save it.
 # Define a format for saving them ==> to enable easier collation for downstream analysis.
 # Loop through all combinations of target and effect variable

@@ -5,7 +5,7 @@ import subprocess
 
 #https://stackoverflow.com/a/89243
 
-ROOT_FOLDER= '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs'
+ROOT_FOLDER= '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20'
 print('='*30+f' WORKING ON: {ROOT_FOLDER} '+'='*30)
 for baseline in ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag-gfn']:
     FOLDER = os.path.join(ROOT_FOLDER,baseline)
@@ -23,7 +23,7 @@ for baseline in ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3',
         if return_code.decode().strip()!='380':
             undone+=1
             if baseline=='dibs':
-                print(f'Undone for: {cmd_str}')
+                print(f'Undone for: `{cmd_str}` ({return_code.decode().strip()})')
 
 
     print(f'{undone} true ATE experiments are not done for {baseline}.')

@@ -26,7 +26,6 @@ if __name__=="__main__":
 
 
     baseline_to_use = [sys_args[0]]
-    SEED_TO_USE = []
 
     treatments = str(sys_args[2])
     outcomes = str(sys_args[3])
@@ -89,7 +88,10 @@ if __name__=="__main__":
                                 continue
 
                             precision,recall,metrics = get_distribution_metrics(estimate_ate_samples,true_ate_samples)
-
+                            precision_0,recall_0,metrics_0 = get_ate_precision_recall(estimate_ate_samples,true_ate_samples,0.0)
+                            precision_025,recall_025,metrics_025 = get_ate_precision_recall(estimate_ate_samples,true_ate_samples,0.025)
+                            precision_05,recall_05,metrics_05 = get_ate_precision_recall(estimate_ate_samples,true_ate_samples,0.05)
+                            
                             KDE_FOLDER = os.path.join(BASE_PATH,'kde')
                             os.makedirs(KDE_FOLDER,exist_ok=True)
 

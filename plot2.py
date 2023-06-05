@@ -5,15 +5,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle as pl
 from tqdm import tqdm
-from eval_utils import get_distribution_metrics
+from eval_utils import get_distribution_metrics,get_ate_precision_recall
 
 def read_pickle_path(path_):
     with open(path_,'rb') as f:
         return pl.load(f)
 
-#from testgr import calculate_squared_diff,calculate_rmse
-FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs'
-#FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20'
+#FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs'
+FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss100'
 
 BASELINES = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag-gfn']
 
@@ -31,13 +30,32 @@ for baseline in BASELINES:
         
         baseline_seed_folder = os.path.join(os.path.join(FOLDER,baseline),str(seed))
         kde_folder = os.path.join(baseline_seed_folder,'kde')
-        pds_paths = [os.path.join(kde_folder,f.name) for f in os.scandir(kde_folder) if f.name.endswith('.csv')]
-        pds = [pd.read_csv(f) for f in pds_paths]
-        dfs_list.extend(pds)
+        if os.path.exists(kde_folder):
+            pds_paths = [os.path.join(kde_folder,f.name) for f in os.scandir(kde_folder) if f.name.endswith('.csv') and os.path.exists(os.path.join(kde_folder,f.name))]
+            #pds_paths = [p for p in pds_paths if os.path.exists(p)]
+            pds = [pd.read_csv(f) for f in pds_paths]
+            dfs_list.extend(pds)
 
 df = pd.concat(dfs_list)
 
 breakpoint()
+df2 = df.groupby(['baselines']).mean().reset_index()
+bb= df2['baselines'].values.tolist()
+w =df2['wasserstein'].values.tolist()
+pr = df2['precision'].values.tolist()
+rec = df2['recall'].values.tolist()
+
+df3 = df.groupby(['baselines']).std().reset_index()
+w2 =df3['wasserstein'].values.tolist()
+pr2 = df3['precision'].values.tolist()
+rec2 = df3['recall'].values.tolist()
+
+s = ''
+for i in range(len(bb)):
+    s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.3f} & {pr[i]:.2f} \pm {pr2[i]:.2f} & {rec[i]:.2f} \pm {rec2[i]:.2f} \\'+'\n'
+
+breakpoint()
+
 
 
 def get_distribution_of_kdes(df):
@@ -59,16 +77,16 @@ def check_if_true_graph_multimodal(list_):
     else:
         return False
 def get_plot_multimodal():
-    IGNORE = False
+    IGNORE = True
     KDE_FOLDER = '/home/mila/c/chris.emezue/scratch/causal_inference/kde_sachs'
-    BASEFOLDER  = '/home/mila/c/chris.emezue/jax-dag-gflownet/plots'
+    BASEFOLDER  = '/home/mila/c/chris.emezue/jax-dag-gflownet/plots_others'
     SACHS_VARIABLES_LIST = ['Akt' ,'Erk' ,'Jnk' ,'Mek', 'P38' ,'PIP2' ,'PIP3' ,'PKA' ,'PKC', 'Plcg' ,'Raf']
     TEMPLATE = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs/dag-gfn/0/variable_ates/true_ate_estimates_{}_{}.csv'
     with tqdm((len(SACHS_VARIABLES_LIST)**2) * len(BASELINES),desc = 'Interesting variables...') as pbar:
         for treatment in SACHS_VARIABLES_LIST:
             for outcome in SACHS_VARIABLES_LIST:
-                #if treatment=='PKA' and outcome=='PIP3':
-                if True:
+                if treatment=='Raf' and outcome=='Mek':
+                #if True:
 
                     # Get true ATE of it.
                     true_ate_filename = TEMPLATE.format(treatment,outcome)
@@ -100,13 +118,35 @@ def get_plot_multimodal():
 
                                     ax[k,m].hist(ate_preds)
                                     prec, rec, _ = get_distribution_metrics(ate_preds,true_ates)
-                                    ax[k,m].set_title('{0} | prec: {1:.2f}, rec:{2:.2f}'.format(baseline,prec,rec),fontdict = {'fontsize': 8})
+                                    if baseline == 'dag-gfn':
+                                        breakpoint()
+                                        X = np.linspace(0.001,0.7,50)
+                                        metrics = [get_ate_precision_recall(ate_preds,true_ates,m) for m in X]
+                                        prec = [m[0] for m in metrics]
+                                        rec = [m[1] for m in metrics]
+                                        fig2,ax2 = plt.subplots(2,1,squeeze= False, sharex=True,sharey=False)
+                                        ax2[0,0].plot(X,prec,color='blue',label='precision')
+                                        ax2[1,0].plot(X,rec,color='red',label='recall')
+                                        ax2[0,0].legend()
+                                        ax2[1,0].legend()
+                                        ax2[1,0].set_xlabel('tol')
+                                        fig2.tight_layout()
+                                        fig2.suptitle(f'DAG-GFN | {treatment} -> {outcome}')
+                                        plt.tight_layout()
+
+                                        fig.savefig('prec_rec_plot_pka_pip3.png')
+                                        breakpoint()
+
+                                    prec2, rec2, _ = get_ate_precision_recall(ate_preds,true_ates)
+
+                                    ax[k,m].set_title(f'{baseline} | prec: {prec:.2f} ({prec2:.2f}), rec:{rec:.2f} ({rec2:.2f})',fontdict = {'fontsize': 8})
                             ax[2,2].cla()
                             #fig.suptitle(f'ATE distribution for {treatment} -> {outcome} | Sachs')
                             #fig.suptitle(f'ATE distributions for {treatment} -> {outcome}')
+                            breakpoint()
 
                             fig.savefig(os.path.join(FIG_FOLDER,f'ate_histogram.png'))
-                    #breakpoint()
+                    breakpoint()
                 pbar.update(1)
 
 

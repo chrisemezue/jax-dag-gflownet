@@ -121,6 +121,72 @@ def get_distribution_metrics(pred_list,true_list):
     return precision,recall,details
 
 
+def regroup_close_values(array):
+    """
+    Regroup floating-point values that are super close within numerical precision.
+
+    Parameters:
+        array (numpy.ndarray): The input array of floating-point values.
+
+    Returns:
+        list: A list of lists representing the regrouped values.
+            Each inner list contains values that are super close within the specified tolerance.
+
+    """
+    groups = []
+    for value in array:
+        found_group = False
+        for group in groups:
+            if any(np.isclose(value, group)):
+                group.append(value)
+                found_group = True
+                break
+        if not found_group:
+            groups.append([value])
+    
+    return groups
+
+
+def get_ate_precision_recall(pred_list, true_list, tol=-np.infty):
+    """
+    By Alexandre Drouin.
+    Calculate precision and recall for modes of the Average Treatment Effect (ATE) distribution.
+
+    Parameters:
+        pred_list (list): List of values sampled from the estimated ATE distribution.
+        true_list (list): List of true ATE values for graphs in the MEC. Each is equally likely.
+        tol (float, optional): Tolerance value used to discard infrequent modes.
+
+    Returns:
+        precision (float): Precision score.
+            The precision score represents the proportion of correctly predicted ATE modes.
+
+        recall (float): Recall score.
+            The recall score represents the proportion of true ATE modes correctly identified.
+
+    """
+    # Regroup values within numerical precision
+    pred = regroup_close_values(pred_list)
+    true_values = [g[0] for g in regroup_close_values(true_list)]
+
+    # Empirical density estimation
+    pred = {group[0]: len(group) / len(pred_list) for group in pred}
+    
+    # Filter modes that are not so frequent
+    pred = {k: v for k, v in pred.items() if v >= tol}
+
+    # Calculate metrics:
+    # Precision: TP/(TP + FP)
+    # Recall: TP/(TP + FN)
+    TP = len([mode for mode in true_values for p in pred.keys() if np.isclose(p, mode)])
+    FP = len(pred) - TP
+    FN = len([mode for mode in true_values if len([p for p in pred if np.isclose(p, mode)]) == 0])
+    precision = TP / (TP + FP)
+    recall = TP / (TP + FN)
+    details = {'TP':TP,'FP':FP,'FN':FN,'P': len(pred)}
+
+    return precision, recall,details
+
 
 def plot_kde(kde,X_samples,log_dens):
     X_samples = transform_to_required_1D(X_samples)
@@ -156,9 +222,9 @@ if __name__ == '__main__':
 
     true = [0.0 for i in range(100)] + [1.0 for i in range(100)]
     #true = np.random.normal(0,0.25,300)
-    pred = [0.0 for i in range(400)] 
-    precision, recall, metrics = get_distribution_metrics(pred,true)
-    #breakpoint()
+    pred = [0.0 for i in range(100)] + [0.001 for i in range(10)] + [0.1 for i in range(50)]+ [-1.0 for i in range(340)] 
+    precision, recall, metrics = get_ate_precision_recall(pred,true)
+    breakpoint()
 
     fig,ax = plt.subplots(1,2,sharex=False,sharey=False,squeeze= False)
     ax[0,0].hist(true,bins=30,label='True ATE',color='orange')

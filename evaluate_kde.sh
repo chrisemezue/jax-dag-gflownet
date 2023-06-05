@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --ntasks=8
+#SBATCH --ntasks=20
 #SBATCH --job-name=kde-evaluate
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=8G
