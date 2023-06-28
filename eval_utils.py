@@ -168,6 +168,7 @@ def get_ate_precision_recall(pred_list, true_list, tol=-np.infty):
     # Regroup values within numerical precision
     pred = regroup_close_values(pred_list)
     true_values = [g[0] for g in regroup_close_values(true_list)]
+    breakpoint()
 
     # Empirical density estimation
     pred = {group[0]: len(group) / len(pred_list) for group in pred}
@@ -185,7 +186,16 @@ def get_ate_precision_recall(pred_list, true_list, tol=-np.infty):
     recall = TP / (TP + FN)
     details = {'TP':TP,'FP':FP,'FN':FN,'P': len(pred)}
 
-    return precision, recall,details
+    # From Chris E.
+    # P = # modes of true ATE distribution
+    # TP: modes from `true` that we found in `pred`
+    # FN: modes from `true` that we missed in `pred` | FN = P - TP
+    # FP: modes from `pred` that are not in `true`
+    # Precision: TP/(TP + FP)
+    # Recall: TP/(TP + FN)
+
+
+    return precision,recall, details
 
 
 def plot_kde(kde,X_samples,log_dens):
