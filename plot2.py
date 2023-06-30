@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle as pl
 from tqdm import tqdm
-from eval_utils import get_distribution_metrics,get_ate_precision_recall
+from eval_utils import get_distribution_metrics,get_ate_precision_recall,regroup_close_values
 
 def read_pickle_path(path_):
     with open(path_,'rb') as f:
@@ -38,23 +38,86 @@ for baseline in BASELINES:
 
 df = pd.concat(dfs_list)
 
-breakpoint()
+# breakpoint()
+# # convert df to long format
+# # plot bar chart
+# df_prec = pd.melt(df, id_vars='baselines', value_vars=['precision','precision_0','precision_025','precision_05'],var_name='precisions', value_name='amount')
+
+# df_rec = pd.melt(df, id_vars='baselines', value_vars=['recall','recall_0','recall_025','recall_05'],var_name='recalls', value_name='amount')
+
+# fig, ax = plt.subplots()
+# df_prec_mean= df_prec.groupby(['baselines','precisions']).mean().reset_index()
+# ax = sns.catplot(x = 'baselines', y='amount', hue = 'precisions',data=df_prec_mean,kind='bar')
+# ax.set_xticklabels(ax.ax.get_xticklabels(), rotation = 45, ha="right")
+
+# #ax.set_titles('Different precision averages')
+# ax.savefig('metric_precisions_baselines_20.png')
+
+# ## for recall
+
+# fig2, ax2 = plt.subplots()
+# df_rec_mean= df_rec.groupby(['baselines','recalls']).mean().reset_index()
+# ax2 = sns.catplot(x = 'baselines', y='amount', hue = 'recalls',data=df_rec_mean,kind='bar')
+
+# ax2.set_xticklabels(ax2.ax.get_xticklabels(), rotation = 45, ha="right")
+# #ax2.set_titles('Different recall averages')
+# ax2.savefig('metric_recall_baselines_20.png')
+
+
+# ['precision','recall','precision_0','recall_0','precision_025','recall_025','precision_05','recall_05']
+#breakpoint()
 df2 = df.groupby(['baselines']).mean().reset_index()
 bb= df2['baselines'].values.tolist()
 w =df2['wasserstein'].values.tolist()
 pr = df2['precision'].values.tolist()
+pr_05 = df2['precision_05'].values.tolist()
 rec = df2['recall'].values.tolist()
+rec_05 = df2['recall_05'].values.tolist()
 
 df3 = df.groupby(['baselines']).std().reset_index()
 w2 =df3['wasserstein'].values.tolist()
 pr2 = df3['precision'].values.tolist()
 rec2 = df3['recall'].values.tolist()
+pr2_05 = df3['precision_05'].values.tolist()
+rec2_05 = df3['recall_05'].values.tolist()
 
 s = ''
 for i in range(len(bb)):
-    s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.3f} & {pr[i]:.2f} \pm {pr2[i]:.2f} & {rec[i]:.2f} \pm {rec2[i]:.2f} \\'+'\n'
+    s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.3f} & {pr[i]:.2f} \pm {pr2[i]:.2f} & {rec[i]:.2f} \pm {rec2[i]:.2f}  & {pr_05[i]:.2f} \pm {pr2_05[i]:.2f} & {rec_05[i]:.2f} \pm {rec2_05[i]:.2f} \\'+'\n'
+
 
 breakpoint()
+
+
+def get_number_graphs_in_mec():
+    ba,mecs,sed = [],[],[]
+    FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs'
+
+    BASELINES = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag-gfn']
+
+    if 'sachs' in FOLDER:
+        SEEDS = [0]
+    else:
+        SEEDS = [i for i in range(26)]
+    
+    for baseline in BASELINES:
+        for seed in SEEDS:
+            
+            baseline_seed_folder = os.path.join(os.path.join(FOLDER,baseline),str(seed))
+            mec_dags_path = os.path.join(baseline_seed_folder,'true_mec_dags.pkl') 
+            if os.path.exists(mec_dags_path):
+                mec_dags = read_pickle_path(mec_dags_path)
+                #breakpoint()
+                ba.append(baseline)
+                mecs.append(len(mec_dags))
+                sed.append(seed)
+    
+    df = pd.DataFrame({'baseline':ba,'Size of MEC':mecs,'seed':sed})
+    breakpoint()
+    fig,ax = plt.subplots()
+    ax = sns.histplot(data=df, x="Size of MEC")
+    fig.savefig('size_of_mec.png')
+
 
 
 
@@ -150,6 +213,46 @@ def get_plot_multimodal():
                 pbar.update(1)
 
 
+def get_true_ate_unique_hist():
+    num_unique_ates = []
+    BASELINES = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag-gfn']
+
+    BASEFOLDER  = '/home/mila/c/chris.emezue/jax-dag-gflownet/plots_others'
+    SACHS_VARIABLES_LIST = ['Akt' ,'Erk' ,'Jnk' ,'Mek', 'P38' ,'PIP2' ,'PIP3' ,'PKA' ,'PKC', 'Plcg' ,'Raf']
+    TEMPLATE = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs/{}/0/variable_ates/true_ate_estimates_{}_{}.csv'
+    with tqdm((len(SACHS_VARIABLES_LIST)**2) * len(BASELINES)) as pbar:
+        for treatment in SACHS_VARIABLES_LIST:
+            for outcome in SACHS_VARIABLES_LIST:
+                #if treatment!=outcome:
+                if treatment == 'Erk' and outcome=='Raf':
+                    for baseline in BASELINES:
+                    #if treatment=='Raf' and outcome=='Mek':
+                    #if True:
+
+                        # Get true ATE of it.
+                        breakpoint()
+                        true_ate_filename = TEMPLATE.format(baseline,treatment,outcome)
+                        if os.path.exists(true_ate_filename):
+                            true_df = pd.read_csv(true_ate_filename)
+                            true_ates = true_df['true_ates'].values.tolist()
+                            #breakpoint()
+                            true_ates2 = regroup_close_values(true_ates)
+                            #unique_true_ates = list(set(true_ates))
+                            #num_unique_ates.append(len(unique_true_ates))
+                            num_unique_ates.append(len(true_ates2))
+
+                    pbar.update(1)
+
+    fig,ax = plt.subplots()
+    breakpoint()
+    ax.hist(num_unique_ates)
+    ax.set_title('Unique ATEs for Erk -> Raf \n (using regrouping)')
+    ax.set_ylabel('Count')
+    ax.set_xlabel('# Unique ATEs')
+    fig.tight_layout()
+    fig.savefig('size_unique_ates_erk_raf.png')
+
+get_true_ate_unique_hist()
 #get_plot_multimodal()
 #breakpoint()
 files = [os.path.join(FOLDER,f.name) for f in os.scandir(FOLDER)]

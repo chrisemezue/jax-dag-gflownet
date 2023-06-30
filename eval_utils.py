@@ -168,7 +168,6 @@ def get_ate_precision_recall(pred_list, true_list, tol=-np.infty):
     # Regroup values within numerical precision
     pred = regroup_close_values(pred_list)
     true_values = [g[0] for g in regroup_close_values(true_list)]
-    breakpoint()
 
     # Empirical density estimation
     pred = {group[0]: len(group) / len(pred_list) for group in pred}
@@ -229,12 +228,11 @@ if __name__ == '__main__':
     # fig.savefig(f'/home/mila/c/chris.emezue/jax-dag-gflownet/kde_sample_{kde.kernel}.png')
 
     # Get the best params
-
+    breakpoint()
     true = [0.0 for i in range(100)] + [1.0 for i in range(100)]
     #true = np.random.normal(0,0.25,300)
     pred = [0.0 for i in range(100)] + [0.001 for i in range(10)] + [0.1 for i in range(50)]+ [-1.0 for i in range(340)] 
     precision, recall, metrics = get_ate_precision_recall(pred,true)
-    breakpoint()
 
     fig,ax = plt.subplots(1,2,sharex=False,sharey=False,squeeze= False)
     ax[0,0].hist(true,bins=30,label='True ATE',color='orange')
@@ -245,7 +243,6 @@ if __name__ == '__main__':
     fig.tight_layout()
     plt.legend()
     fig.savefig('test-true-random.png')
-    breakpoint()
 
 
     ATE_FOLDER = '/home/mila/c/chris.emezue/scratch/ate_estimates_main_20'
