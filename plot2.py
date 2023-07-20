@@ -12,7 +12,8 @@ def read_pickle_path(path_):
         return pl.load(f)
 
 #FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/sachs_obs'
-FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss100'
+#FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss20'
+#FOLDER = '/home/mila/c/chris.emezue/gflownet_sl/tmp/lingauss100'
 
 BASELINES = ['bcdnets','bootstrap_ges','bootstrap_pc','dibs','gadget','mc3','dag-gfn']
 
@@ -38,6 +39,10 @@ for baseline in BASELINES:
 
 df = pd.concat(dfs_list)
 
+name_to_num_dict = {'precision_025':0.025,'recall_025':0.025,
+                    'precision_05':0.05,'recall_05':0.05,
+                    'precision':0,'recall':0}
+
 # breakpoint()
 # # convert df to long format
 # # plot bar chart
@@ -45,7 +50,36 @@ df = pd.concat(dfs_list)
 
 # df_rec = pd.melt(df, id_vars='baselines', value_vars=['recall','recall_0','recall_025','recall_05'],var_name='recalls', value_name='amount')
 
+# df_prec.dropna(inplace=True)
+# df_rec.dropna(inplace=True)
+# df_prec = df_prec[df_prec['precisions']!='precision_0']
+# df_rec = df_rec[df_rec['recalls']!='recall_0']
+
+# df_prec['precisions'] = df_prec['precisions'].apply(lambda x: name_to_num_dict[x])
+# df_rec['recalls'] = df_rec['recalls'].apply(lambda x: name_to_num_dict[x])
+
 # fig, ax = plt.subplots()
+# ax = sns.lineplot(data=df_prec, x="precisions", y="amount",hue='baselines',style='baselines',markers=True)
+# fig.tight_layout()
+# ax.set_xlabel('density relaxation value (tol)')
+# ax.set_ylabel('precision')
+
+# fig.savefig('metric_final_precisions_baselines_20.png')
+
+# ## for recall
+
+# fig, ax = plt.subplots()
+# ax = sns.lineplot(data=df_rec, x="recalls", y="amount",hue='baselines',style='baselines',markers=True)
+# fig.tight_layout()
+# ax.set_xlabel('density relaxation value (tol)')
+# ax.set_ylabel('recall')
+
+# fig.savefig('metric_final_recalls_baselines_20.png')
+
+# breakpoint()
+
+
+
 # df_prec_mean= df_prec.groupby(['baselines','precisions']).mean().reset_index()
 # ax = sns.catplot(x = 'baselines', y='amount', hue = 'precisions',data=df_prec_mean,kind='bar')
 # ax.set_xticklabels(ax.ax.get_xticklabels(), rotation = 45, ha="right")
@@ -65,25 +99,53 @@ df = pd.concat(dfs_list)
 
 
 # ['precision','recall','precision_0','recall_0','precision_025','recall_025','precision_05','recall_05']
-#breakpoint()
-df2 = df.groupby(['baselines']).mean().reset_index()
+breakpoint()
+df_ = df.groupby(['baselines','seeds']).mean().reset_index()
+df2 = df_.groupby(['baselines']).mean().reset_index()
+
+#df2['wasserstein'] = df2['wasserstein']*-1
 bb= df2['baselines'].values.tolist()
 w =df2['wasserstein'].values.tolist()
 pr = df2['precision'].values.tolist()
 pr_05 = df2['precision_05'].values.tolist()
+pr_025 = df2['precision_025'].values.tolist()
+
 rec = df2['recall'].values.tolist()
 rec_05 = df2['recall_05'].values.tolist()
+rec_025 = df2['recall_025'].values.tolist()
 
-df3 = df.groupby(['baselines']).std().reset_index()
+df3 = df_.groupby(['baselines']).sem().reset_index() # to get standard error
+#df3 = df.groupby(['baselines']).std().reset_index()
+
 w2 =df3['wasserstein'].values.tolist()
 pr2 = df3['precision'].values.tolist()
 rec2 = df3['recall'].values.tolist()
-pr2_05 = df3['precision_05'].values.tolist()
-rec2_05 = df3['recall_05'].values.tolist()
+pr2_025 = df3['precision_025'].values.tolist()
+rec2_025 = df3['recall_025'].values.tolist()
+
+
+
+
+# # Code to draw barplot of WD, recall, precision
+# df2_use = df2[['baselines','wasserstein','precision','recall']]
+# df2_use_melt = pd.melt(df2_use, id_vars='baselines', value_vars=['precision','recall','wasserstein'],var_name='metric', value_name='amount')
+
+# fig, ax = plt.subplots() 
+# ax = sns.barplot(data=df2_use_melt, x="baselines", y="amount", hue='metric')
+# fig.tight_layout()
+# ax.set_xlabel('Baseline algorithms')
+# ax.set_ylabel('Value')
+# fig.savefig('bar-chart-metric_final_sachs.png')
+
+# ## End of code plot
 
 s = ''
 for i in range(len(bb)):
-    s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.3f} & {pr[i]:.2f} \pm {pr2[i]:.2f} & {rec[i]:.2f} \pm {rec2[i]:.2f}  & {pr_05[i]:.2f} \pm {pr2_05[i]:.2f} & {rec_05[i]:.2f} \pm {rec2_05[i]:.2f} \\'+'\n'
+    #s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.3f} & {pr[i]:.2f} \pm {pr2[i]:.2f} & {rec[i]:.2f} \pm {rec2[i]:.2f}  & {pr_05[i]:.2f} \pm {pr2_05[i]:.2f} & {rec_05[i]:.2f} \pm {rec2_05[i]:.2f} \\'+'\n'
+    s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.4f} & {pr[i]:.2f} \pm {pr2[i]:.4f} & {rec[i]:.2f} \pm {rec2[i]:.4f} \\'+'\n'
+ 
+    #s = s+f'{bb[i]} & {w[i]:.3f} \pm {w2[i]:.3f} & {pr_025[i]:.2f} \pm {pr2_025[i]:.2f} & {rec_025[i]:.2f} \pm {rec2_025[i]:.2f} \\'+'\n'
+    #s = s+f'{bb[i]} & {w[i]:.3f}  & {pr_025[i]:.2f}  & {rec_025[i]:.2f}  \\'+'\n'
 
 
 breakpoint()
